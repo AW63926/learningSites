@@ -1,13 +1,10 @@
 package com.learningSites;
 
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Optional;
-
 import static org.mockito.Mockito.when;
 import static org.mockito.Mockito.verify;
 
+import java.util.Optional;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -20,6 +17,10 @@ import org.springframework.ui.Model;
 public class ReviewerControllerTest {
 	
 	
+	@InjectMocks
+	private ReviewerController underTest;
+	
+	
 	
 	@Mock
 	private Reviewer reviewer;
@@ -27,6 +28,9 @@ public class ReviewerControllerTest {
 	@Mock 
 	private ReviewerRepository reviewerRepo;
 	
+	
+	@Mock
+	private Model model;
 	
 	@Before
 	public void setUp() {
@@ -37,6 +41,12 @@ public class ReviewerControllerTest {
 	public void shouldAddSingleReviewerToModel() {
 		long reviewerId = 1;
 		when(reviewerRepo.findById(reviewerId)).thenReturn(Optional.of(reviewer));
+		
+		
+		underTest.findOneReviewer(reviewerId, model);
+		verify(model).addAttribute("reviewers", reviewer);
+		
+		
 	}
 	
 	
