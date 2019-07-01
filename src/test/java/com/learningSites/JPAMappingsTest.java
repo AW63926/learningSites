@@ -6,6 +6,8 @@ import static org.junit.Assert.assertThat;
 import static org.hamcrest.collection.IsIterableContainingInAnyOrder.containsInAnyOrder;
 
 import javax.annotation.Resource;
+
+import java.util.Collection;
 import java.util.Optional;
 
 import org.junit.Test;
@@ -26,6 +28,9 @@ public class JPAMappingsTest {
 
 	@Resource
 	private ReviewerRepository reviewerRepo;
+
+	@Resource
+	private ReviewRepository reviewRepo;
 
 	@Test
 	public void shouldSaveAndLoadWebsite() {
@@ -62,7 +67,7 @@ public class JPAMappingsTest {
 		entityManager.clear();
 
 		Optional<Reviewer> result = reviewerRepo.findById(reviewerId);
-		result.get();
+		reviewer = result.get();
 		assertThat(reviewer.getName(), is("reviewer name"));
 	}
 
@@ -75,9 +80,67 @@ public class JPAMappingsTest {
 		reviewer = reviewerRepo.save(reviewer);
 		long reviewerId = reviewer.getId();
 
+		entityManager.flush();
+		entityManager.clear();
+
 		Optional<Reviewer> result = reviewerRepo.findById(reviewerId);
 		reviewer = result.get();
-		
-		assertThat(reviewer.getWebsites(), containsInAnyOrder(udemy,lynda));
+
+		assertThat(reviewer.getWebsites(), containsInAnyOrder(udemy, lynda));
 	}
+
+	@Test
+	public void shouldFindReviewerForWebsite() {
+		Website udemy = websiteRepo.save(new Website("udemy"));
+
+		Reviewer cost = reviewerRepo.save(new Reviewer("cost", "Description", udemy));
+		Reviewer certification = reviewerRepo.save(new Reviewer("Certification", "Description", udemy));
+
+		entityManager.flush();
+		entityManager.clear();
+
+		Collection<Reviewer> reviewersforWebsite = reviewerRepo.findByWebsitesContains(udemy);
+
+		assertThat(reviewersforWebsite, containsInAnyOrder(cost, certification));
+
+	}
+
+	@Test
+	public void shouldFindReviewersForWebsiteId() {
+		Website udemy = websiteRepo.save(new Website("udemy"));
+		long websiteId = udemy.getId();
+
+		Reviewer cost = reviewerRepo.save(new Reviewer("cost", "Description", udemy));
+		Reviewer certification = reviewerRepo.save(new Reviewer("Certification", "Description", udemy));
+
+		entityManager.flush();
+		entityManager.clear();
+
+		Collection<Reviewer> reviewersForWebsite = reviewerRepo.findByWebsitesId(websiteId);
+
+		assertThat(reviewersForWebsite, containsInAnyOrder(cost, certification));
+
+	}
+
+	@Test
+	public void shouldEstablishReviewToReviewerRelationships() {
+		Reviewer reviewer = new Reviewer("name", "description");
+		reviewerRepo.save(reviewer);
+		long reviewerId = reviewer.getId();
+
+		Review element = new Review("title", reviewer);
+		reviewRepo.save(element);
+
+		Review element2 = new Review("title two", reviewer);
+		reviewRepo.save(element2);
+
+		entityManager.flush();
+		entityManager.clear();
+
+		Optional<Reviewer> result = reviewerRepo.findById(reviewerId);
+		reviewer = result.get();
+		assertThat(reviewer.getReviews(), containsInAnyOrder(element, element2));
+
+	}
+
 }
