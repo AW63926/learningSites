@@ -18,6 +18,9 @@ public class ReviewerController {
 	@Resource
 	WebsiteRepository websiteRepo;
 	
+	@Resource
+	ReviewRepository reviewRepo;
+	
 	@RequestMapping("/reviewer")
 	public String findOneReviewer(@RequestParam(value="id")long id, Model model) throws ReviewersNotFoundException {
 		Optional<Reviewer> reviewer = reviewerRepo.findById(id);
@@ -53,6 +56,26 @@ public class ReviewerController {
 	public String findAllWebsites(Model model) {
 		model.addAttribute("websites", websiteRepo.findAll());
 		return ("websites");
+		
+	}
+	
+	
+	@RequestMapping("/review")
+	public String findOneReview(@RequestParam(value="id")long id, Model model) throws ReviewNotFoundException {
+		Optional<Review> review = reviewRepo.findById(id);
+		
+		if(review.isPresent()) {
+			model.addAttribute("review", review.get());
+			return "review";
+		}
+		throw new ReviewNotFoundException();
+	}
+	
+	
+	@RequestMapping("/reviews")
+	public String findAllReviews(Model model) {
+		model.addAttribute("review", reviewRepo.findAll());
+		return ("reviews");
 		
 	}
 	
