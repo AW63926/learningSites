@@ -22,6 +22,8 @@ public class ReviewerControllerTest {
 	@InjectMocks
 	private ReviewerController underTest;
 	
+
+	
 	
 	
 	@Mock
@@ -32,6 +34,15 @@ public class ReviewerControllerTest {
 	
 	@Mock 
 	private ReviewerRepository reviewerRepo;
+	
+	@Mock
+	private Review review;
+	
+	@Mock
+	private Review anotherReview;
+	
+	@Mock 
+	private ReviewRepository reviewRepo;
 	
 	
 	@Mock
@@ -95,6 +106,30 @@ public class ReviewerControllerTest {
 		underTest.findAllWebsites(model);
 		verify(model).addAttribute("websites", allWebsites);
 	}
+	
+		@Test
+		public void shouldAddSingleReviewToModel() throws ReviewNotFoundException {
+		long reviewId = 1;
+		when(reviewRepo.findById(reviewId)).thenReturn(Optional.of(review));
+		
+		
+		underTest.findOneReview(reviewId, model);
+		verify(model).addAttribute("review", review);
+		
+		
+	}
+	
+	
+	
+	@Test
+	public void shouldAddAllReviewsToModel() {
+		Collection<Review> allReviews = Arrays.asList(review, anotherReview);
+		when(reviewRepo.findAll()).thenReturn(allReviews);		
+		underTest.findAllReviews(model);
+		verify(model).addAttribute("review", allReviews);
+	}
+	
+	
 	
 
 }
