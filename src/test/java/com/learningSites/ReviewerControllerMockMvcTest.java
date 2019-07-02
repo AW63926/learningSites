@@ -33,6 +33,9 @@ public class ReviewerControllerMockMvcTest {
 
 	@MockBean
 	private WebsiteRepository websiteRepo;
+	
+	@MockBean
+	private ReviewRepository reviewRepo;
 
 	@Mock
 	private Reviewer reviewer;
@@ -45,6 +48,12 @@ public class ReviewerControllerMockMvcTest {
 
 	@Mock
 	private Website anotherWebsite;
+	
+	@Mock
+	private Review review;
+	
+	@Mock
+	private Review anotherReview;
 
 	@Test
 	public void shouldRouteToSingleWebsiteView() throws Exception {
