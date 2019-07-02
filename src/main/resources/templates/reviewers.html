@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title> A List of All Available Reviewers</title>
+</head>
+<body>
+	<h1> A List of Reviewers</h1>
+
+<div th:each="reviewer: ${reviewers}">
+	<li> 
+	<a th:href="@{/reviewer(id=${reviewer.id})}" th:text ="${reviewer.name}"></a>
+		
+	</li>
+</div>
+
+</body>
+</html>
