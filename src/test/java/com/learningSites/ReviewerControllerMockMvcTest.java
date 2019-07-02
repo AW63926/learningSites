@@ -77,7 +77,7 @@ public class ReviewerControllerMockMvcTest {
 
 	@Test
 	public void shouldPutSingleWebsiteIntoModel() throws Exception {
-		when(websiteRepo.findById(1L)).thenReturn(Optional.of(website));
+		when(websiteRepo.findById(42L)).thenReturn(Optional.of(website));
 
 		mvc.perform(get("/website?id=42")).andExpect(model().attribute("websites", is(website)));
 
