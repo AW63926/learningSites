@@ -29,13 +29,13 @@ public class ReviewerPopulator implements CommandLineRunner {
 		Website w3school = new Website("W3school");
 		w3school = websiteRepo.save(w3school);
 		
-		Reviewer adam = new Reviewer ("Adam","Cost of learning", udemy);
+		Reviewer adam = new Reviewer ("Adam","Cost of learning", "lynda_logo_200.png", udemy);
 		adam = reviewerRepo.save(adam);
 		
-		Reviewer mary = new Reviewer ("Adam","Cost of learning", udemy);
+		Reviewer mary = new Reviewer ("Mary","Cost of learning", "/img/lynda_logo_200.png", udemy);
 		mary = reviewerRepo.save(mary);
 		
-		Reviewer grace = new Reviewer ("Adam","Cost of learning", udemy);
+		Reviewer grace = new Reviewer ("Grace","Cost of learning","/img/lynda_logo_200.png", udemy);
 		grace = reviewerRepo.save(grace);
 		
 		reviewRepo.save(new Review("Cost of Learning", grace));
