@@ -20,16 +20,16 @@ public class ReviewerPopulator implements CommandLineRunner {
 	@Override
 	public void run(String...args) throws Exception {
 		
-		Website udemy = new Website("Udemy");
+		Website udemy = new Website("Udemy", "udemyLogo_200.png");
 		udemy = websiteRepo.save(udemy);
-		Website lynda = new Website("Lynda");
+		Website lynda = new Website("Lynda", "lynda_logo_200.png");
 		lynda = websiteRepo.save(lynda);
-		Website edX = new Website("EdX");
+		Website edX = new Website("EdX", "Edx_200.png");
 		edX = websiteRepo.save(edX);
-		Website w3school = new Website("W3school");
+		Website w3school = new Website("W3schools", "W3logo_200.png");
 		w3school = websiteRepo.save(w3school);
 		
-		Reviewer adam = new Reviewer ("Adam","Cost of learning", "lynda_logo_200.png", udemy);
+		Reviewer adam = new Reviewer ("Adam","Cost of learning", "profile.jpg", udemy);
 		adam = reviewerRepo.save(adam);
 		
 		Reviewer mary = new Reviewer ("Mary","Cost of learning", "/img/lynda_logo_200.png", udemy);

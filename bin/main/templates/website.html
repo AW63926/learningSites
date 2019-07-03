@@ -12,7 +12,7 @@
 
 	<div th:each="website: ${websites}">
 		<h2 th:text="${website.name}"></h2>
-		<a href="http:localhost:8080/show-websites">Back to Home</a>
+		<a th:href="@{/websites}">Back to Websites List</a>
 	</div>
 
 	<div th:each="reviewer: ${reviewers}">

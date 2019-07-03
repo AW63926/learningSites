@@ -19,6 +19,8 @@ public class Website {
 	@ManyToMany(mappedBy = "websites")
 	private Collection<Reviewer> reviewers;
 
+	private String websiteImage;
+
 	public Long getId() {
 		return id;
 
@@ -27,9 +29,14 @@ public class Website {
 	public String getName() {
 		return name;
 	}
+	
+	public String getImage() {
+		return websiteImage;
+	}
 
 	public Website() {
 	}
+	
 
 	@Override
 	public int hashCode() {
@@ -56,8 +63,9 @@ public class Website {
 		return true;
 	}
 
-	public Website(String name) {
+	public Website(String name, String webImage) {
 		this.name = name;
+		this.websiteImage = webImage;
 
 	}
 
