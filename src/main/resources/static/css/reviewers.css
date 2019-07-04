@@ -1,0 +1,26 @@
+* {
+	font-family: Arial, sans-serif;
+	line-height: 1.618em;
+	box-sizing: border-box;
+	
+}
+
+#body {
+	max-width: 800px;
+	margin: 0 auto;
+}
+
+#reviewerImage{
+	display: inline-flexbox;
+	max-width: 150px;
+}
+
+#revGrid{
+	display: inline-block;
+	padding-left: 2em;
+	padding-right: 2em;
+
+}
+
+
+
