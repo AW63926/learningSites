@@ -7,20 +7,47 @@
 
 #body {
 	max-width: 800px;
-	margin: 0 auto;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 #reviewerImage{
 	display: inline-flexbox;
-	max-width: 150px;
+	max-width: 145px;
+	max-height: 150px;
+	padding-top: 1.5em;
+	padding-left: 1em;
+	padding-right: 1em;
+
 }
 
 #revGrid{
-	display: inline-block;
+
+	display: inline-grid;
 	padding-left: 2em;
 	padding-right: 2em;
+	background: whitesmoke;
+	max-height: 280px;
+	margin-left: auto;
+	margin-right: auto;
 
 }
+
+#ourNames {
+	color: black;
+	font-size: 3em;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: 800;
+	text-decoration: none;
+}
+
+#header {
+	text-align: center;
+	margin-left: 0 auto;
+	margin-right: 0 auto;
+}
+
+
 
 
 
