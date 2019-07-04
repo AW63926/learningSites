@@ -16,6 +16,7 @@ public class Reviewer {
 	@Id
 	@GeneratedValue
 	private Long id;
+	private String imageName;
 
 	private String name;
 	private String description;
@@ -41,6 +42,10 @@ public class Reviewer {
 	public String getDescription() {
 		return description;
 
+	}
+	
+	public String getImage() {
+		return imageName;
 	}
 
 	@Override
@@ -68,9 +73,10 @@ public class Reviewer {
 		return true;
 	}
 
-	public Reviewer(String name, String description, Website... websites) {
+	public Reviewer(String name, String description, String imageName, Website... websites) {
 		this.name = name;
 		this.description = description;
+		this.imageName = imageName;
 		this.websites = new HashSet<>(Arrays.asList(websites));
 	}
 
