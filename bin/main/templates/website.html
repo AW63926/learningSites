@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>A Website</title>
+</head>
+<body>
+
+	<header>
+		<h1>A Learning Website</h1>
+	</header>
+
+	<div th:each="website: ${websites}">
+		<h2 th:text="${website.name}"></h2>
+		<a th:href="@{/websites}">Back to Websites List</a>
+	</div>
+
+	<div th:each="reviewer: ${reviewers}">
+		<h2>
+			<a th:href="@{/reviewer(id=${reviewer.id})}" th:text="${reviewer.name}"></a>
+		</h2>
+	</div>
+
+</body>
+</html>
