@@ -22,20 +22,26 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(ReviewerController.class)
-public class ReviewerControllerMockMvcTest {
+@WebMvcTest(WebsiteController.class)
+public class WebsiteControllerMockMvcTest {
 
 	@Resource
 	private MockMvc mvc;
 
 	@MockBean
+	private WebsiteRepository websiteRepo;
+
+	@MockBean
 	private ReviewerRepository reviewerRepo;
 
 	@MockBean
-	private WebsiteRepository websiteRepo;
-	
-	@MockBean
 	private ReviewRepository reviewRepo;
+
+	@Mock
+	private Website website;
+
+	@Mock
+	private Website anotherWebsite;
 
 	@Mock
 	private Reviewer reviewer;
@@ -44,14 +50,8 @@ public class ReviewerControllerMockMvcTest {
 	private Reviewer anotherReviewer;
 
 	@Mock
-	private Website website;
-
-	@Mock
-	private Website anotherWebsite;
-	
-	@Mock
 	private Review review;
-	
+
 	@Mock
 	private Review anotherReview;
 
@@ -63,14 +63,15 @@ public class ReviewerControllerMockMvcTest {
 	}
 
 	@Test
-	public void shouldBeOkForSingleWebsite() throws Exception {
+	public void shouldShowSingleWebsite() throws Exception {
 		long arbitraryWebsiteId = 42;
 		when(websiteRepo.findById(arbitraryWebsiteId)).thenReturn(Optional.of(website));
+
 		mvc.perform(get("/website?id=42")).andExpect(status().isOk());
 	}
 
 	@Test
-	public void shouldBeNotOkForSingleWebiste() throws Exception {
+	public void shouldNotShowSingleWebiste() throws Exception {
 		mvc.perform(get("/website?id=42")).andExpect(status().isNotFound());
 
 	}
@@ -107,18 +108,20 @@ public class ReviewerControllerMockMvcTest {
 	public void shouldRouteToSingleReviewerView() throws Exception {
 		long arbitraryReviewerId = 1;
 		when(reviewerRepo.findById(arbitraryReviewerId)).thenReturn(Optional.of(reviewer));
+
 		mvc.perform(get("/reviewer?id=1")).andExpect(view().name(is("reviewer")));
 	}
 
 	@Test
-	public void shouldBeOkForSingleReviewer() throws Exception {
+	public void shouldShowSingleReviewer() throws Exception {
 		long arbitraryReviewerId = 1;
 		when(reviewerRepo.findById(arbitraryReviewerId)).thenReturn(Optional.of(reviewer));
+
 		mvc.perform(get("/reviewer?id=1")).andExpect(status().isOk());
 	}
 
 	@Test
-	public void shouldBeNotOkForSingleReviewer() throws Exception {
+	public void shouldNotShowSingleReviewer() throws Exception {
 		mvc.perform(get("/reviewer?id=1")).andExpect(status().isNotFound());
 
 	}
@@ -151,4 +154,48 @@ public class ReviewerControllerMockMvcTest {
 		mvc.perform(get("/reviewers")).andExpect(model().attribute("reviewers", is(allReviewers)));
 	}
 
+	@Test
+	public void shouldRouteToSingleReviewView() throws Exception {
+		long arbitraryReviewId = 1;
+		when(reviewRepo.findById(arbitraryReviewId)).thenReturn(Optional.of(review));
+		mvc.perform(get("/review?id=1")).andExpect(view().name(is("review")));
+	}
+
+	@Test
+	public void shouldShowSingleReview() throws Exception {
+		long arbitraryReviewId = 1;
+		when(reviewRepo.findById(arbitraryReviewId)).thenReturn(Optional.of(review));
+		mvc.perform(get("/review?id=1")).andExpect(status().isOk());
+	}
+
+	@Test
+	public void shouldNotShowSingleReview() throws Exception {
+		mvc.perform(get("/review?id=1")).andExpect(status().isNotFound());
+
+	}
+
+	@Test
+	public void shouldPutSingleReviewIntoModel() throws Exception {
+		when(reviewRepo.findById(1L)).thenReturn(Optional.of(review));
+
+		mvc.perform(get("/review?id=1")).andExpect(model().attribute("reviews", is(review)));
+	}
+
+	@Test
+	public void shouldShowAllReviewsView() throws Exception {
+		mvc.perform(get("/reviews")).andExpect(view().name(is("reviews")));
+	}
+
+	@Test
+	public void shouldBeOkForAllReviews() throws Exception {
+		mvc.perform(get("/reviews")).andExpect(status().isOk());
+	}
+
+	@Test
+	public void shouldPutAllReviewsIntoModel() throws Exception {
+		Collection<Review> allReviews = Arrays.asList(review, anotherReview);
+		when(reviewRepo.findAll()).thenReturn(allReviews);
+
+		mvc.perform(get("/reviews")).andExpect(model().attribute("reviews", is(allReviews)));
+	}
 }

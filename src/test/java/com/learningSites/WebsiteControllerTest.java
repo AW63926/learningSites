@@ -14,11 +14,20 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.ui.Model;
 
-public class ReviewerControllerTest {
+public class WebsiteControllerTest {
 
 	@InjectMocks
-	private ReviewerController underTest;
+	private WebsiteController underTest;
 
+	@Mock
+	private Website website;
+
+	@Mock
+	private Website anotherWebsite;
+
+	@Mock
+	private WebsiteRepository websiteRepo;
+	
 	@Mock
 	private Reviewer reviewer;
 
@@ -40,18 +49,27 @@ public class ReviewerControllerTest {
 	@Mock
 	private Model model;
 
-	@Mock
-	private Website website;
-
-	@Mock
-	private Website anotherWebsite;
-
-	@Mock
-	private WebsiteRepository websiteRepo;
-
 	@Before
 	public void setUp() {
 		MockitoAnnotations.initMocks(this);
+	}
+	
+	@Test
+	public void shouldAddSingleWebsiteToModel() throws WebsiteNotFoundException {
+		long websiteId = 1;
+		when(websiteRepo.findById(websiteId)).thenReturn(Optional.of(website));
+
+		underTest.findOneWebsite(websiteId, model);
+		verify(model).addAttribute("websites", website);
+	}
+
+	@Test
+	public void shouldAddAllWebsitesToModel() {
+		Collection<Website> allWebsites = Arrays.asList(website, anotherWebsite);
+		when(websiteRepo.findAll()).thenReturn(allWebsites);
+
+		underTest.findAllWebsites(model);
+		verify(model).addAttribute("websites", allWebsites);
 	}
 
 	@Test
@@ -73,23 +91,7 @@ public class ReviewerControllerTest {
 		verify(model).addAttribute("reviewers", allReviewers);
 	}
 
-	@Test
-	public void shouldAddSingleWebsiteToModel() throws WebsiteNotFoundException {
-		long websiteId = 1;
-		when(websiteRepo.findById(websiteId)).thenReturn(Optional.of(website));
 
-		underTest.findOneWebsite(websiteId, model);
-		verify(model).addAttribute("websites", website);
-	}
-
-	@Test
-	public void shouldAddAllWebsitesToModel() {
-		Collection<Website> allWebsites = Arrays.asList(website, anotherWebsite);
-		when(websiteRepo.findAll()).thenReturn(allWebsites);
-
-		underTest.findAllWebsites(model);
-		verify(model).addAttribute("websites", allWebsites);
-	}
 
 	@Test
 	public void shouldAddSingleReviewToModel() throws ReviewNotFoundException {
