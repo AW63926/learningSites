@@ -2,9 +2,16 @@
 	font-family: Arial, sans-serif;
 	line-height: 1.618em;
 	
-	
 }
-
+.site-list .row{
+margin-bottom: 20px;
+}
+#home-h1{
+padding-bottom: 20px;
+}
+.reviewers li{
+list-style: none;
+}
 
 #siteGrid{
     display: inline-grid;
@@ -41,5 +48,10 @@
 
 #webLinks {
     text-decoration: none;
-    
+}
+.reviewer h3{
+padding: 20px;
+}
+.reviewer .btn{
+float: right;
 }
