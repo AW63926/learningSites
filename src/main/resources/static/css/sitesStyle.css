@@ -1,0 +1,40 @@
+* {
+	font-family: Arial, sans-serif;
+	line-height: 1.618em;
+	
+	
+}
+
+
+#siteGrid{
+    display: inline-grid;
+    padding-left: 2em;
+    padding-right: 4em;
+    padding-top: 2em;
+    padding-bottom: 2em;
+    background: whites;
+    max-height: 280px;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+
+#body {
+    margin: 0 auto;
+    max-width: 800px;
+}
+
+#header{
+    text-align: center;
+
+}
+
+#reviewersLink{
+    text-decoration: none;
+    padding-top: 8em;
+
+}
+
+#rLink {
+    padding-top: 8em;
+}
