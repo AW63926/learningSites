@@ -61,7 +61,7 @@ public class ReviewerController {
 	
 	
 	@RequestMapping("/review")
-	public String findOneReview(@RequestParam(value="id")long id, Model model) throws ReviewNotFoundException {
+	public String findOneReview(@RequestParam(value="id")Long id, Model model) throws ReviewNotFoundException {
 		Optional<Review> review = reviewRepo.findById(id);
 		
 		if(review.isPresent()) {
