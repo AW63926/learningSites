@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-public class ReviewerController {
+public class WebsiteController {
 	
 	@Resource
 	ReviewerRepository reviewerRepo;
@@ -50,16 +50,14 @@ public class ReviewerController {
 		}
 		throw new WebsiteNotFoundException();
 	}
-	
-	
+
 	@RequestMapping("/websites")
 	public String findAllWebsites(Model model) {
 		model.addAttribute("websites", websiteRepo.findAll());
 		return ("websites");
 		
 	}
-	
-	
+
 	@RequestMapping("/review")
 	public String findOneReview(@RequestParam(value="id")Long id, Model model) throws ReviewNotFoundException {
 		Optional<Review> review = reviewRepo.findById(id);
@@ -70,15 +68,12 @@ public class ReviewerController {
 		}
 		throw new ReviewNotFoundException();
 	}
-	
-	
+
 	@RequestMapping("/reviews")
 	public String findAllReviews(Model model) {
 		model.addAttribute("review", reviewRepo.findAll());
 		return ("reviews");
 		
 	}
-	
-	
 
 }

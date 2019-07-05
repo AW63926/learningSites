@@ -14,10 +14,10 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.ui.Model;
 
-public class ReviewerControllerTest {
+public class WebsiteControllerTest {
 
 	@InjectMocks
-	private ReviewerController underTest;
+	private WebsiteController underTest;
 
 	@Mock
 	private Reviewer reviewer;

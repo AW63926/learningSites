@@ -31,6 +31,8 @@ public class ReviewerPopulator implements CommandLineRunner {
 		
 		Reviewer adam = new Reviewer ("Adam","As a software developer in process, I am always looking for learning resources.  I have ample experience with each of the learning websites we have listed, and I am gathering more experience by the minute!!", "profile.jpg", udemy);
 		adam = reviewerRepo.save(adam);
+
+
 		
 		Reviewer mary = new Reviewer ("Mary","Cost of learning", "mary.JPG", udemy);
 		mary = reviewerRepo.save(mary);

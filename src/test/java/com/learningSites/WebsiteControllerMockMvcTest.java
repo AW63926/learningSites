@@ -22,8 +22,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(ReviewerController.class)
-public class ReviewerControllerMockMvcTest {
+@WebMvcTest(WebsiteController.class)
+public class WebsiteControllerMockMvcTest {
 
 	@Resource
 	private MockMvc mvc;
