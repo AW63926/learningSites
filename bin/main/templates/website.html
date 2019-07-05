@@ -11,9 +11,11 @@
 	</header>
 
 	<div th:each="website: ${websites}">
-		<h2 th:text="${website.name}"></h2>
-		<a th:href="@{/websites}">Back to Websites List</a>
-	</div>
+			<h2 th:text="${website.name}"></h2>
+			<p th:text = "${website.review}"></p>
+			<img th:src = "@{'/img/' + ${website.image}}"/>
+			<a th:href="@{/websites}">Back to Websites List</a>
+		</div>
 
 	<div th:each="reviewer: ${reviewers}">
 		<h2>

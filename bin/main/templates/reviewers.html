@@ -2,22 +2,31 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 	<title> A List of All Available Reviewers</title>
+	<link rel="stylesheet" type="text/css" href="css/reviewers.css">
 </head>
-<body>
-	<h1> A List of Reviewers</h1>
+<body id="body">
+	<h1 id="header">Reviewers</h1>
+	<main>
+	
 
-<div th:each="reviewer: ${reviewers}">
-	<ul>
-	<li> 
-	<a th:href="@{/reviewer(id=${reviewer.id})}" th:text ="${reviewer.name}"></a>
-	<img th:src = "@{'/img/' + ${reviewer.image}}"/>	
-	</li>
-	</ul>
+<div id="revGrid" th:each="reviewer: ${reviewers}"> 
+	
+	<img id="reviewerImage" th:src = "@{'/img/' + ${reviewer.image}}"/>	
+
+
+	<article>
+	<a id="ourNames" th:href="@{/reviewer(id=${reviewer.id})}" th:text ="${reviewer.name}"></a>
+	</article>
+	
+
 </div>
+
+
+
 <div>
 	<a th:href="@{/websites}">Websites</a>
 </div>
 
-
+</main>
 </body>
 </html>

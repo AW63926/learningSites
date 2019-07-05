@@ -8,12 +8,9 @@
 	<h1>A List of Reviews</h1>
 </header>
 
-<div th:each="review:${reviews}">
-	<h2>
-		<a th:href="@{/review(id=${review.id})}" th:text="${review.name}"></a>
-
-	</h2>
-</div>
+<div id="reviewGrid" th:each="review:${reviews}"></div>
+	
+<a th:href="@{/websites}">Back to Websites List</a>
 
 </body>
 </html>
