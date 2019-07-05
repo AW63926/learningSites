@@ -21,31 +21,13 @@ public class WebsiteController {
 	@Resource
 	ReviewRepository reviewRepo;
 	
-	@RequestMapping("/website")
-	public String findOneWebsite(@RequestParam(value="id")long id, Model model) throws WebsiteNotFoundException {
-		Optional<Website> website = websiteRepo.findById(id);
-		
-		if(website.isPresent()) {
-			model.addAttribute("websites", website.get());
-			return ("website");
-		}
-		throw new WebsiteNotFoundException();
-	}
-		
-	@RequestMapping("/websites")
-	public String findAllWebsites(Model model) {
-		model.addAttribute("websites", websiteRepo.findAll());
-		return "websites";
-		
-	}
-	
 	@RequestMapping("/reviewer")
 	public String findOneReviewer(@RequestParam(value="id")long id, Model model) throws ReviewersNotFoundException {
 		Optional<Reviewer> reviewer = reviewerRepo.findById(id);
 		
 		if(reviewer.isPresent()) {
 			model.addAttribute("reviewers", reviewer.get());
-			return ("reviewer");
+			return "reviewer";
 		}
 		throw new ReviewersNotFoundException();
 	}
@@ -54,31 +36,44 @@ public class WebsiteController {
 	@RequestMapping("/reviewers")
 	public String findAllReviewers(Model model) {
 		model.addAttribute("reviewers", reviewerRepo.findAll());
-		return "reviewers";
+		return ("reviewers");
 		
 	}
 	
+	@RequestMapping("/website")
+	public String findOneWebsite(@RequestParam(value="id")long id, Model model) throws WebsiteNotFoundException {
+		Optional<Website> website = websiteRepo.findById(id);
+		
+		if(website.isPresent()) {
+			model.addAttribute("websites", website.get());
+			return "website";
+		}
+		throw new WebsiteNotFoundException();
+	}
+
+	@RequestMapping("/websites")
+	public String findAllWebsites(Model model) {
+		model.addAttribute("websites", websiteRepo.findAll());
+		return ("websites");
+		
+	}
+
 	@RequestMapping("/review")
 	public String findOneReview(@RequestParam(value="id")Long id, Model model) throws ReviewNotFoundException {
 		Optional<Review> review = reviewRepo.findById(id);
 		
 		if(review.isPresent()) {
 			model.addAttribute("review", review.get());
-			model.addAttribute("websites", websiteRepo.findByReviewsContains(review.get()));
-			
-			return ("review");
+			return "review";
 		}
 		throw new ReviewNotFoundException();
 	}
-	
-	
+
 	@RequestMapping("/reviews")
 	public String findAllReviews(Model model) {
 		model.addAttribute("review", reviewRepo.findAll());
-		return "reviews";
+		return ("reviews");
 		
 	}
-	
-	
 
 }

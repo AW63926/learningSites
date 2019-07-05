@@ -1,47 +1,38 @@
 package com.learningSites;
 
-//import java.util.HashSet;
+import java.util.HashSet;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-//import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-//import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
-//import java.util.Arrays;
-//import java.util.Collection;
+import java.util.Arrays;
+import java.util.Collection;
 
 @Entity
 public class Reviewer {
-
 	@Id
 	@GeneratedValue
 	private Long id;
-
 	private String imageName;
+
 	private String name;
 	private String description;
-	private String reviewer;
+	private String reviewText;
+	private String siteName;
+	private String certification;
+	private String accessibility;
 
-	public Reviewer(String name, String description, String imageName, Website udemy, Website edX, Website w3Schools, Website lynda) {
+	@ManyToMany
+	private Collection<Website> websites;
 
-	}
-//	@ManyToMany
-//	private Collection<Website> websites;
-//
-//	@OneToMany(mappedBy = "reviewer")
-//	private Collection<Review> reviews;
+	@OneToMany(mappedBy = "reviewer")
+	private Collection<Review> reviews;
 
-	@ManyToOne
-	private Website website;
+	public Reviewer() {
 
-	public Reviewer(String name, String description, String imageName, Website website) {
-		this.name = name;
-		this.description = description;
-		this.imageName = imageName;
-//	this.websites = new HashSet<>(Arrays.asList(websites));
-		this.website = website;
 	}
 
 	public Long getId() {
@@ -56,13 +47,41 @@ public class Reviewer {
 		return description;
 
 	}
+	public String getReviewText() {
+		return reviewText;
+	}
+
+	public void setReviewText(String reviewText) {
+		this.reviewText = reviewText;
+	}
+
+	public String getSiteName() {
+		return siteName;
+	}
+
+	public void setSiteName(String siteName) {
+		this.siteName = siteName;
+	}
+
+	public String getCertification() {
+		return certification;
+	}
+
+	public void setCertification(String certification) {
+		this.certification = certification;
+	}
+
+	public String getAccessibility() {
+		return accessibility;
+	}
+
+	public void setAccessibility(String accessibility) {
+		this.accessibility = accessibility;
+	}
+
 
 	public String getImage() {
 		return imageName;
-	}
-
-	public String getReviewers() {
-		return reviewer;
 	}
 
 	@Override
@@ -90,13 +109,28 @@ public class Reviewer {
 		return true;
 	}
 
-//	public Collection<Website> getWebsites() {
-//		return websites;
-//	}
-//
-//	public Collection<Review> getReviews() {
-//
-//		return reviews;
-//	}
+	public Reviewer(String name, String description, String imageName, Website... websites) {
+		this.name = name;
+		this.description = description;
+		this.imageName = imageName;
+		this.websites = new HashSet<>(Arrays.asList(websites));
+	}
+
+
+	public Reviewer (Long id, String reviewText, String siteName, String certification, String accessibility){
+     this.id = id;
+     this.reviewText = reviewText;
+     this.siteName = siteName;
+     this.certification = certification;
+     this.accessibility = accessibility;
+	}
+	public Collection<Website> getWebsites() {
+		return websites;
+	}
+
+	public Collection<Review> getReviews() {
+
+		return reviews;
+	}
 
 }

@@ -1,56 +1,32 @@
 package com.learningSites;
 
-//import java.util.Arrays;
-import java.util.Collection;
-//import java.util.HashSet;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-//import javax.persistence.ManyToOne;
-//import javax.persistence.OneToMany;
+
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Review {
 
 	@Id
 	@GeneratedValue
-	private Long id;
-//
+	private long id;
+
 	private String title;
 
-//	@ManyToOne
-//	private Reviewer reviewer;
-//	
-//	@OneToMany(mappedBy = "review")
-//	private Collection<Review> reviews;
-
-	@ManyToMany(mappedBy = "reviews")
-	private Collection<Website> websites;
+	@ManyToOne
+	private Reviewer reviewer;
 
 	public Review() {
 
 	}
 
-	public Review(String title) {
+	public Review(String title, Reviewer reviewer) {
+
 		this.title = title;
-//		this.reviewer = reviewer;
-
+		this.reviewer = reviewer;
 	}
-
-	public String getName() {
-		return title.toString();
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-//	public String getTitle() {
-//		return title;
-//
-//	}
 
 	@Override
 	public int hashCode() {
@@ -74,13 +50,5 @@ public class Review {
 		return true;
 	}
 
-	public Collection<Website> getWebsites() {
-		return websites;
-	}
-
-//public Collection<Review> getReviews() {
-//
-//	return reviews;
-//}
-
 }
+

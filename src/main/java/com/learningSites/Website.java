@@ -1,14 +1,11 @@
 package com.learningSites;
 
 import java.util.Collection;
-import java.util.HashSet;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
-import java.util.Arrays;
 
 @Entity
 public class Website {
@@ -18,23 +15,11 @@ public class Website {
 	private Long id;
 
 	private String name;
-	private String websiteImage;
 
-	@ManyToMany
-	private Collection<Review> reviews;
-
-	@OneToMany(mappedBy = "websites")
+	@ManyToMany(mappedBy = "websites")
 	private Collection<Reviewer> reviewers;
 
-	public Website() {
-	}
-
-	public Website(String name, String webImage, Review... reviews) {
-		this.name = name;
-		this.websiteImage = webImage;
-		this.reviews = new HashSet<>(Arrays.asList(reviews));
-
-	}
+	private String websiteImage;
 
 	public Long getId() {
 		return id;
@@ -44,14 +29,14 @@ public class Website {
 	public String getName() {
 		return name;
 	}
-
+	
 	public String getImage() {
 		return websiteImage;
 	}
 
-	public Collection<Review> getReviews() {
-		return reviews;
+	public Website() {
 	}
+	
 
 	@Override
 	public int hashCode() {
@@ -76,6 +61,12 @@ public class Website {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
+	}
+
+	public Website(String name, String webImage) {
+		this.name = name;
+		this.websiteImage = webImage;
+
 	}
 
 }
