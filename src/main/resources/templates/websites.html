@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title> A list of Websites</title>
+	<link rel="stylesheet" type="text/css" href="css/sitesStyle.css">
+</head>
+<body id="body">
+<header>
+	<h1 id="header">A List of Learning Websites</h1>
+</header>
+
+<div id="siteGrid" th:each="website:${websites}">
+	<h2>
+		
+		<img th:src = "@{'/img/' + ${website.image}}"/>
+		
+
+	</h2>
+	<a id="webLinks" th:href="@{/website(id=${website.id})}" th:text="${website.name}"></a>
+</div>
+
+<div id="rLink">
+	<a id="reviewersLink" th:href="@{/reviewers}">A list of Reviewers</a>
+</div>
+
+
+
+
+</body>
+</html>

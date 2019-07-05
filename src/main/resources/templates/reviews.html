@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title> A list of Reviews</title>
+</head>
+<body>
+<header>
+	<h1>A List of Reviews</h1>
+</header>
+
+<div id="reviewGrid" th:each="review:${reviews}"></div>
+	
+<a th:href="@{/websites}">Back to Websites List</a>
+
+</body>
+</html>
