@@ -3,18 +3,21 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 	<title>A Website</title>
+	<link rel="stylesheet" type="text/css" href="css/website.css">
 </head>
 <body>
 
 	<header>
-		<h1>A Learning Website</h1>
+		<h1 id="h1" >A Learning Website</h1>
 	</header>
 
-	<div th:each="website: ${websites}">
-			<h2 th:text="${website.name}"></h2>
+	<div id="contentMain" th:each="website: ${websites}">
+			<img id="img" th:src = "@{'/img/' + ${website.image}}"/>
+			<h2 id="heading" th:text="${website.name}"></h2>
 			<p th:text = "${website.review}"></p>
-			<img th:src = "@{'/img/' + ${website.image}}"/>
-			<a th:href="@{/websites}">Back to Websites List</a>
+			<img id="starRating" th:src="@{'/img/' + ${website.starRating}}"/>
+			
+			
 			
 		</div> 
 		
@@ -24,6 +27,13 @@
 			<a th:href="@{/reviewer(id=${reviewer.id})}" th:text="${reviewer.name}"></a>
 		</h2>
 	</div>
+	<nav>
+			<div id="navText">
+			<a href="#about" id="aboutNav">About</a>
+			<a th:href="@{http://localhost:8080/websites}">Websites</a>
+			<a th:href="@{http://localhost:8080/reviewers}" id="contactNav">Reviewers</a>
+			</div>
+		</nav>
 
 </body>
 </html>
