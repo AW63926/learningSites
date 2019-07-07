@@ -17,6 +17,8 @@ public class Website {
 	private String name;
 	
 	private String review;
+	
+	private String starRating;
 
 	@ManyToMany(mappedBy = "websites")
 	private Collection<Reviewer> reviewers;
@@ -65,15 +67,24 @@ public class Website {
 		return true;
 	}
 
-	public Website(String name, String webImage, String review) {
+	public Website(String name, String webImage, String review, String starRating) {
 		this.name = name;
 		this.websiteImage = webImage;
 		this.review = review;
+		this.starRating = starRating;
 
 	}
 
 	public String getReview() {
 		return review;
+	}
+
+	public String getStarRating() {
+		return starRating;
+	}
+
+	public void setStarRating(String starRating) {
+		this.starRating = starRating;
 	}
 
 	
