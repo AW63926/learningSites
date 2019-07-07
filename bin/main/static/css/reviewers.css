@@ -6,7 +6,7 @@
 }
 
 #body {
-	max-width: 800px;
+	max-width: 700px;
 	margin-left: auto;
 	margin-right: auto;
 }
@@ -21,15 +21,19 @@
 
 }
 
-#revGrid{
 
+
+#revGrid{
+	max-width: 700px;
+	margin-left: auto;
+	margin-right: auto;
 	display: inline-grid;
 	padding-left: 2em;
 	padding-right: 2em;
 	background: whitesmoke;
 	max-height: 280px;
-	margin-left: auto;
-	margin-right: auto;
+	
+	
 
 }
 
@@ -45,6 +49,32 @@
 	text-align: center;
 	margin-left: 0 auto;
 	margin-right: 0 auto;
+	padding: 2em;
+	font-size: 2em;
+}
+
+
+nav{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	background-color: rgb(10, 22, 94);
+	
+	display: flex;
+	flex-flow: row;
+	justify-content: center;
+	max-width: 100%;
+
+}
+nav a {
+	padding: 1em 2em;
+	text-decoration: none;
+	color:#fff;
+
+}
+nav a:hover {
+	background: rgb(146, 150, 190);
 }
 
 

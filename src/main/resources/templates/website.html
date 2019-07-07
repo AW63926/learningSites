@@ -15,7 +15,9 @@
 			<p th:text = "${website.review}"></p>
 			<img th:src = "@{'/img/' + ${website.image}}"/>
 			<a th:href="@{/websites}">Back to Websites List</a>
-		</div>
+			
+		</div> 
+		
 
 	<div th:each="reviewer: ${reviewers}">
 		<h2>

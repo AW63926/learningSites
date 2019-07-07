@@ -65,7 +65,7 @@ public class ReviewerController {
 		Optional<Review> review = reviewRepo.findById(id);
 		
 		if(review.isPresent()) {
-			model.addAttribute("review", review.get());
+			model.addAttribute("reviews", review.get());
 			return "review";
 		}
 		throw new ReviewNotFoundException();
@@ -74,7 +74,7 @@ public class ReviewerController {
 	
 	@RequestMapping("/reviews")
 	public String findAllReviews(Model model) {
-		model.addAttribute("review", reviewRepo.findAll());
+		model.addAttribute("reviews", reviewRepo.findAll());
 		return ("reviews");
 		
 	}

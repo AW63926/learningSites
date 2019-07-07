@@ -40,6 +40,12 @@ public class ReviewerPopulator implements CommandLineRunner {
 		
 		
 		
+		Review revOne = new Review("Lynda",  adam, "Stars5.png", "Stars4.png", "Lynda.com is a great resource for Learning full subjects, ");
+		revOne = reviewRepo.save(revOne);
+		reviewRepo.save(new Review("Lynda", adam, "Stars5.png", "Stars4.png", "Lynda.com is a great resource for Learning full subjects, "
+				+ "and even offers learning paths with certificates that can be published to your LinkedIn."));
+		
+		
 		reviewRepo.save(new Review("Lynda", adam, "Stars5.png", "Stars4.png", "Lynda.com is a great resource for Learning full subjects, "
 				+ "and even offers learning paths with certificates that can be published to your LinkedIn."));
 		reviewRepo.save(new Review("Udemy", adam, "Stars5.png", "Stars4.png", "Udemy offers many courses and learning paths that will cover the entire breadth of a subject.  LIke lynda, Udemy offers a search feature "

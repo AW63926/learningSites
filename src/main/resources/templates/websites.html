@@ -2,27 +2,34 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 	<title> A list of Websites</title>
-	<link rel="stylesheet" type="text/css" href="css/sitesStyle.css">
+	<link rel="stylesheet" type="text/css" href="css/websites.css">
 </head>
 <body id="body">
 <header>
 	<h1 id="header">A List of Learning Websites</h1>
 </header>
 
-<div id="siteGrid" th:each="website:${websites}">
+<div class="container" th:each="website:${websites}">
 	<h2>
 		
-		<img th:src = "@{'/img/' + ${website.image}}"/>
+			<a id="webLinks" th:href="@{/website(id=${website.id})}"><img class="box" th:src = "@{'/img/' + ${website.image}}"/></a>
 		
 
 	</h2>
-	<a id="webLinks" th:href="@{/website(id=${website.id})}" th:text="${website.name}"></a>
+	
 </div>
 
 <div id="rLink">
 	<a id="reviewersLink" th:href="@{/reviewers}">A list of Reviewers</a>
 </div>
 
+<nav>
+		<div id="navText">
+		<a href="#about" id="aboutNav">About</a>
+		<a th:href="@{http://localhost:8080/websites}">Websites</a>
+		<a th:href="@{http://localhost:8080/reviewers}" id="contactNav">Reviewers</a>
+		</div>
+	</nav>
 
 
 

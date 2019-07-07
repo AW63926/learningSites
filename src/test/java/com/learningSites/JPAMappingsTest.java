@@ -124,7 +124,7 @@ public class JPAMappingsTest {
 
 	@Test
 	public void shouldEstablishReviewToReviewerRelationships() {
-		Reviewer reviewer = new Reviewer("name", "description");
+		Reviewer reviewer = new Reviewer("name", "description", "grace.JPG", );
 		reviewerRepo.save(reviewer);
 		long reviewerId = reviewer.getId();
 
