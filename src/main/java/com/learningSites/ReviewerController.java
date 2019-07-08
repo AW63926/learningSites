@@ -85,16 +85,16 @@ public class ReviewerController {
 			newReviewer = new Reviewer(reviewerName, reviewerDescription, reviewerImageName, website);
 			reviewerRepo.save(newReviewer);
 		}
-		return "redirect:/show-reviewers";
+		return "redirect:/reviewers";
 	}
 
-	@RequestMapping("/delete-course")
+	@RequestMapping("/delete-reviewer")
 	public String deleteReviewerByName(String reviewerName) {
 		if(reviewerRepo.findByName(reviewerName) !=null) {
 			Reviewer deletedReviewer = reviewerRepo.findByName(reviewerName);
 			reviewerRepo.delete(deletedReviewer);
 		}
-		return "reditect:/show-reviewers";
+		return "redirect:/reviewers";
 
 	}
 

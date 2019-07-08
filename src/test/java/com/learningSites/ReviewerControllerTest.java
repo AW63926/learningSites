@@ -129,10 +129,10 @@ public class ReviewerControllerTest {
 		underTest.deleteReviewerByName(reviewerName);
 		verify(reviewerRepo).delete(reviewer);
 	}
-@Test 
-public void shouldRemoveReviewerFromModelById() {
-	underTest.deleteReviewerById(reviewerId);
-	verify(reviewerRepo).deleteById(reviewerId);
+	@Test 
+	public void shouldRemoveReviewerFromModelById() {
+		underTest.deleteReviewerById(reviewerId);
+		verify(reviewerRepo).deleteById(reviewerId);
 }
 
 	}
