@@ -22,6 +22,8 @@ public class ReviewerControllerTest {
 	@Mock
 	private Reviewer reviewer;
 	Long reviewerId;
+	
+	
 
 	@Mock
 	private Reviewer anotherReviewer;
@@ -43,6 +45,7 @@ public class ReviewerControllerTest {
 
 	@Mock
 	private Website website;
+	Long websiteId;
 
 	@Mock
 	private Website anotherWebsite;
@@ -143,7 +146,18 @@ public class ReviewerControllerTest {
 		Website newWebsite = new Website(websiteName, websiteReview);
 		when(websiteRepo.save(newWebsite)).thenReturn(newWebsite);
 	}
-	
+	@Test 
+	public void shouldRemoveWebsiteFromModelByName() {
+		String websiteName = website.getName();
+		when(websiteRepo.findByName(websiteName)).thenReturn(website);
+		underTest.deleteWebsiteByName(websiteName);
+		verify(websiteRepo).delete(website);
+	}
+	@Test 
+	public void shouldRemoveWebsiteFromModelById() {
+		underTest.deleteWebsiteById(websiteId);
+		verify(websiteRepo).deleteById(websiteId);
+	}
 	
 
 	}

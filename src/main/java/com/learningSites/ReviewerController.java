@@ -126,8 +126,27 @@ public class ReviewerController {
 		Website newWebsite = websiteRepo.findByName(websiteName);
 		if(newWebsite==null) {
 			newWebsite = new Website(websiteName, websiteReview);
+			websiteRepo.save(newWebsite);
 		}
 		return "redirect:/websites";
 		
 	}
-}
+
+	
+	@RequestMapping("/del-website")
+	public String deleteWebsiteById(Long websiteId) {
+		websiteRepo.deleteById(websiteId);
+		return "redirect:/websites";
+	}
+
+	public String deleteWebsiteByName(String websiteName) {
+		if(websiteRepo.findByName(websiteName) !=null) {
+			Website deletedWebsite = websiteRepo.findByName(websiteName);
+			websiteRepo.delete(deletedWebsite);
+		}
+		return "redirect:/websites";
+
+	}
+		
+	}
+
