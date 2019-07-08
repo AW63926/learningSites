@@ -133,12 +133,14 @@ public class ReviewerController {
 	}
 
 	
-	@RequestMapping("/del-website")
+	@RequestMapping("/delete-website")
 	public String deleteWebsiteById(Long websiteId) {
 		websiteRepo.deleteById(websiteId);
 		return "redirect:/websites";
 	}
 
+	
+	@RequestMapping("/del-website")
 	public String deleteWebsiteByName(String websiteName) {
 		if(websiteRepo.findByName(websiteName) !=null) {
 			Website deletedWebsite = websiteRepo.findByName(websiteName);
