@@ -120,4 +120,14 @@ public class ReviewerController {
 		
 		return "reviewers";
 	}
+
+	@RequestMapping("/add-website")
+	public String addWebsite(String websiteName, String websiteReview) {
+		Website newWebsite = websiteRepo.findByName(websiteName);
+		if(newWebsite==null) {
+			newWebsite = new Website(websiteName, websiteReview);
+		}
+		return "redirect:/websites";
+		
+	}
 }

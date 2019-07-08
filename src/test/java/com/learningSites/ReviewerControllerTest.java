@@ -133,7 +133,18 @@ public class ReviewerControllerTest {
 	public void shouldRemoveReviewerFromModelById() {
 		underTest.deleteReviewerById(reviewerId);
 		verify(reviewerRepo).deleteById(reviewerId);
-}
+	}
+	
+	@Test
+	public void shouldAddAdditionalWebsiteToModel() {
+		String websiteName = "testWebsite";
+		String websiteReview = "test web review";
+		underTest.addWebsite(websiteName, websiteReview);
+		Website newWebsite = new Website(websiteName, websiteReview);
+		when(websiteRepo.save(newWebsite)).thenReturn(newWebsite);
+	}
+	
+	
 
 	}
 

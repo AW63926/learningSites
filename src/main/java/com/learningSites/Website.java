@@ -74,6 +74,12 @@ public class Website {
 		this.starRating = starRating;
 
 	}
+	
+	public Website(String name, String review) {
+	this.name = name;
+	this.review = review;
+	
+	}
 
 	public String getReview() {
 		return review;

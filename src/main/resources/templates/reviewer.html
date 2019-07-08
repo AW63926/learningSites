@@ -14,7 +14,7 @@
 		<img id="profileImg" th:src = "@{'/img/' + ${reviewer.image}}"/>
 	
 	<form method ="POST">
-	<button type="submit" th:value"${review.id}" name="reviewerId" th:formaction="@{del-reviewer}"> delete </button>
+	<button type="submit" th:value"${reviewer.id}" name="reviewerId" th:formaction="@{del-reviewer}"> delete </button>
 	</form>
 	</div>
 
