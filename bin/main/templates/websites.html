@@ -20,16 +20,16 @@
 </div>
 
 <form method="POST">
-	<div>
+	<div id="enterWebField">
 		<label>Enter Website Name: </label>
 		<input type="text" name="websiteName" />
 	</div>
-	<div>
+	<div id="reviewField">
 			<label>Enter Website Review: </label>
 			<input type="text" name="websiteReview" />
 		</div>
 
-		<div>
+		<div id="webAddButton">
 			<button th:formaction="@{add-website}">Add Website</button> 
 		</div>
 
@@ -39,12 +39,12 @@
 </form>
 <form method="POST">
 
-		<div>
+		<div id="enterName">
 			<label>Enter Website Name:</label> <input type="text"
 				name="websiteName" />
 		</div>
 
-		<div>
+		<div id="webDeleteButton">
 			<button th:formaction="@{del-website}">Delete Website</button>
 		</div>
 
