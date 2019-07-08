@@ -85,16 +85,16 @@ public class ReviewerController {
 			newReviewer = new Reviewer(reviewerName, reviewerDescription, reviewerImageName, website);
 			reviewerRepo.save(newReviewer);
 		}
-		return "redirect:/show-reviewers";
+		return "redirect:/reviewers";
 	}
 
-	@RequestMapping("/delete-course")
+	@RequestMapping("/delete-reviewer")
 	public String deleteReviewerByName(String reviewerName) {
 		if(reviewerRepo.findByName(reviewerName) !=null) {
 			Reviewer deletedReviewer = reviewerRepo.findByName(reviewerName);
 			reviewerRepo.delete(deletedReviewer);
 		}
-		return "reditect:/show-reviewers";
+		return "redirect:/reviewers";
 
 	}
 
@@ -120,4 +120,35 @@ public class ReviewerController {
 		
 		return "reviewers";
 	}
-}
+
+	@RequestMapping("/add-website")
+	public String addWebsite(String websiteName, String websiteReview) {
+		Website newWebsite = websiteRepo.findByName(websiteName);
+		if(newWebsite==null) {
+			newWebsite = new Website(websiteName, websiteReview);
+			websiteRepo.save(newWebsite);
+		}
+		return "redirect:/websites";
+		
+	}
+
+	
+	@RequestMapping("/delete-website")
+	public String deleteWebsiteById(Long websiteId) {
+		websiteRepo.deleteById(websiteId);
+		return "redirect:/websites";
+	}
+
+	
+	@RequestMapping("/del-website")
+	public String deleteWebsiteByName(String websiteName) {
+		if(websiteRepo.findByName(websiteName) !=null) {
+			Website deletedWebsite = websiteRepo.findByName(websiteName);
+			websiteRepo.delete(deletedWebsite);
+		}
+		return "redirect:/websites";
+
+	}
+		
+	}
+

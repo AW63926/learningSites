@@ -6,11 +6,11 @@
 </head>
 <body id="body">
 <header>
-	<h1 id="header">A List of Learning Websites</h1>
+	<h1 id="header">Learning Websites</h1>
 </header>
 
 <div class="container" th:each="website:${websites}">
-	<h2>
+	<h2 id="siteImages">
 		
 			<a id="webLinks" th:href="@{/website(id=${website.id})}"><img class="box" th:src = "@{'/img/' + ${website.image}}"/></a>
 		
@@ -19,9 +19,38 @@
 	
 </div>
 
-<div id="rLink">
-	<a id="reviewersLink" th:href="@{/reviewers}">A list of Reviewers</a>
-</div>
+<form method="POST">
+	<div id="enterWebField">
+		<label>Enter Website Name: </label>
+		<input type="text" name="websiteName" />
+	</div>
+	<div id="reviewField">
+			<label>Enter Website Review: </label>
+			<input type="text" name="websiteReview" />
+		</div>
+
+		<div id="webAddButton">
+			<button th:formaction="@{add-website}">Add Website</button> 
+		</div>
+
+		
+		
+
+</form>
+<form method="POST">
+
+		<div id="enterName">
+			<label>Enter Website Name:</label> <input type="text"
+				name="websiteName" />
+		</div>
+
+		<div id="webDeleteButton">
+			<button th:formaction="@{del-website}">Delete Website</button>
+		</div>
+
+	</form>
+
+
 
 <nav>
 		<div id="navText">
