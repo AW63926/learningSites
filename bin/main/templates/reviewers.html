@@ -1,35 +1,97 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-	<title> A List of All Available Reviewers</title>
-	<link rel="stylesheet" type="text/css" href="css/reviewers.css">
+<title>A List of All Available Reviewers</title>
+<link rel="stylesheet" type="text/css" href="css/reviewers.css">
 </head>
 <body id="body">
 	<h1 id="header">Reviewers</h1>
+
 	<main>
+
+
+	<div id="revGrid" th:each="reviewer: ${reviewers}">
+
+		<img id="reviewerImage" th:src="@{'/img/' + ${reviewer.image}}" />
+
+
+		<article>
+			<a id="ourNames" th:href="@{/reviewer(id=${reviewer.id})}"
+				th:text="${reviewer.name}"></a>
+		</article>
+
+
+	</div>
+
+	<form method="POST">
+
+		<div>
+			<label>Enter Reviewer Name:</label> <input type="text"
+				name="reviewerName" />
+		</div>
+
+		<div>
+			<label>Enter Reviewer Description:</label> <input type="text"
+				name="reviewerDescription" />
+		</div>
+
+		<div>
+			<label>Enter Reviewer ImageName:</label> <input type="text"
+				name="reviewerImageName" />
+		</div>
+
+		<div>
+			<label>Enter website:</label> <input type="text" name="websiteName" />
+		</div>
+
+		<div>
+			<button th:formaction="@{add-reviewer}">add reviewer></button>
+		</div>
+
+	</form>
+
+	</div>
+
+	<form method="POST">
+
+		<div>
+			<label>Enter Reviewer Name:</label> <input type="text"
+				name="reviewerName" />
+		</div>
+
+		<div>
+			<button th:formaction="@{delete-reviewer}">add reviewer></button>
+		</div>
+
+	</form>
+
+	<form method="GET">
+
+		<div>
+			<label>Enter Website Name:</label> <input type="text"
+				name="websiteName" />
+		</div>
+
+		<div>
+			<button th:formaction="@{find-by-website}">find reviewer></button>
+		</div>
+
+	</form>
 	
-
-<div id="revGrid" th:each="reviewer: ${reviewers}"> 
+	<form method="GET">
+	<div>
 	
-	<img id="reviewerImage" th:src = "@{'/img/' + ${reviewer.image}}"/>	
-
-
-	<article>
-	<a id="ourNames" th:href="@{/reviewer(id=${reviewer.id})}" th:text ="${reviewer.name}"></a>
-	</article>
+	<button th:formaction=@{/sort-reviewers}"> sort </button>
 	
+	</div>
+</form>
+	<nav>
+		<a href="#about" id="aboutNav">About</a> <a
+			th:href="@{http://localhost:8080/websites}">Websites</a> <a
+			th:href="@{http://localhost:8080/reviewers}" id="contactNav">Reviewers</a>
 
-</div>
+	</nav>
 
-
-
-<nav>
-	<a href="#about" id="aboutNav">About</a>
-	<a th:href="@{http://localhost:8080/websites}">Websites</a>
-	<a th:href="@{http://localhost:8080/reviewers}" id="contactNav">Reviewers</a>
-	
-</nav>
-
-</main>
+	</main>
 </body>
 </html>

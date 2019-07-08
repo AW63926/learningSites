@@ -1,10 +1,13 @@
 package com.learningSites;
 
+//import java.util.Collection;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+//import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+//import javax.persistence.OneToMany;
 
 @Entity
 public class Review {
@@ -20,6 +23,9 @@ public class Review {
 
 	@ManyToOne
 	private Reviewer reviewer;
+	
+//	@ManyToMany(mappedBy= "reviews")
+//	private Collection<Website>websites;
 
 	public Review() {
 
@@ -105,6 +111,8 @@ public class Review {
 			return false;
 		return true;
 	}
-
+//public Collection <Website> getWebsites(){
+//	return websites;
+//}
 }
 

@@ -6,7 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
+//import javax.persistence.OneToMany;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -24,9 +24,9 @@ public class Reviewer {
 	@ManyToMany
 	private Collection<Website> websites;
 
-	@OneToMany(mappedBy = "reviewer")
-	private Collection<Review> reviews;
-
+//	@OneToMany(mappedBy = "reviewer")
+//	private Collection<Review> reviews;
+	
 	public Reviewer() {
 
 	}
@@ -84,9 +84,9 @@ public class Reviewer {
 		return websites;
 	}
 
-	public Collection<Review> getReviews() {
-
-		return reviews;
-	}
+//	public Collection<Review> getReviews() {
+//
+//		return reviews;
+//	}
 
 }
