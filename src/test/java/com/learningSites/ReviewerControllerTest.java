@@ -21,6 +21,7 @@ public class ReviewerControllerTest {
 
 	@Mock
 	private Reviewer reviewer;
+	Long reviewerId;
 
 	@Mock
 	private Reviewer anotherReviewer;
@@ -97,7 +98,7 @@ public class ReviewerControllerTest {
 		when(reviewRepo.findById(reviewId)).thenReturn(Optional.of(review));
 
 		underTest.findOneReview(reviewId, model);
-		verify(model).addAttribute("review", review);
+		verify(model).addAttribute("reviews", review);
 
 	}
 
@@ -108,5 +109,31 @@ public class ReviewerControllerTest {
 		underTest.findAllReviews(model);
 		verify(model).addAttribute("review", allReviews);
 	}
-
+	
+	@Test 
+	public void shouldAddAdditionalReviewersToModel() {
+		String websiteName = "website name";
+		Website newWebsite = websiteRepo.findByName(websiteName);
+		String reviewerName = "new reviewer";
+		String reviewerDescription = "new reviewer description";
+		String reviewerImageName = "new reviewer imageName";
+		underTest.addReviewer(reviewerName, reviewerDescription, reviewerImageName, websiteName);
+		Reviewer newReviewer = new Reviewer(reviewerName, reviewerDescription, reviewerImageName, newWebsite);
+		when(reviewerRepo.save(newReviewer)).thenReturn(newReviewer);
+		
+	}
+	@Test 
+	public void shouldRemoveReviewerFromModelByName() {
+		String reviewerName = reviewer.getName();
+		when(reviewerRepo.findByName(reviewerName)).thenReturn(reviewer);
+		underTest.deleteReviewerByName(reviewerName);
+		verify(reviewerRepo).delete(reviewer);
+	}
+@Test 
+public void shouldRemoveReviewerFromModelById() {
+	underTest.deleteReviewerById(reviewerId);
+	verify(reviewerRepo).deleteById(reviewerId);
 }
+
+	}
+
