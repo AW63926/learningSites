@@ -32,12 +32,23 @@
 		<div>
 			<button th:formaction="@{add-website}">Add Website</button> 
 		</div>
-		<div>
-			<button th:formaction="@{del-website}">Delete Website></button>
-		</div>
+
+		
 		
 
 </form>
+<form method="POST">
+
+		<div>
+			<label>Enter Website Name:</label> <input type="text"
+				name="websiteName" />
+		</div>
+
+		<div>
+			<button th:formaction="@{del-website}">Delete Website</button>
+		</div>
+
+	</form>
 
 
 
