@@ -15,7 +15,12 @@
 			<img id="img" th:src = "@{'/img/' + ${website.image}}"/>
 			<h2 id="heading" th:text="${website.name}"></h2>
 			<p th:text = "${website.review}"></p>
-			<img id="starRating" th:src="@{'/img/' + ${website.starRating}}"/>
+			<h2 class="ratings">Overall Rating</h2>
+			<img class="starRating" th:src="@{'/img/' + ${website.starRating}}"/>
+			<h2 class="ratings">Accessibility</h2>
+			<img class="starRating" th:src="@{'/img/' + ${website.starRating2}}"/>
+			<h2 class="ratings">Quality of Information</h2>
+			<img class="starRating" th:src="@{'/img/' + ${website.starRating3}}"/>
 			
 			
 			
