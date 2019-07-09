@@ -20,10 +20,6 @@ public class Reviewer {
 
 	private String name;
 	private String description;
-	private String reviewText;
-	private String siteName;
-	private String certification;
-	private String accessibility;
 
 	@ManyToMany
 	private Collection<Website> websites;
@@ -47,39 +43,7 @@ public class Reviewer {
 		return description;
 
 	}
-	public String getReviewText() {
-		return reviewText;
-	}
-
-	public void setReviewText(String reviewText) {
-		this.reviewText = reviewText;
-	}
-
-	public String getSiteName() {
-		return siteName;
-	}
-
-	public void setSiteName(String siteName) {
-		this.siteName = siteName;
-	}
-
-	public String getCertification() {
-		return certification;
-	}
-
-	public void setCertification(String certification) {
-		this.certification = certification;
-	}
-
-	public String getAccessibility() {
-		return accessibility;
-	}
-
-	public void setAccessibility(String accessibility) {
-		this.accessibility = accessibility;
-	}
-
-
+	
 	public String getImage() {
 		return imageName;
 	}
@@ -116,14 +80,6 @@ public class Reviewer {
 		this.websites = new HashSet<>(Arrays.asList(websites));
 	}
 
-
-	public Reviewer (Long id, String reviewText, String siteName, String certification, String accessibility){
-     this.id = id;
-     this.reviewText = reviewText;
-     this.siteName = siteName;
-     this.certification = certification;
-     this.accessibility = accessibility;
-	}
 	public Collection<Website> getWebsites() {
 		return websites;
 	}
