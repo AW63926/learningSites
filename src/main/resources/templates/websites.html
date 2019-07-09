@@ -28,6 +28,33 @@
 			<label>Enter Website Review: </label>
 			<input type="text" name="websiteReview" />
 		</div>
+		<div class="ratings">
+			<h3 class="ratingHeading">Overall Rating</h3>
+		<input type="radio" name="starRating" value="Stars1.png" checked>One<br>
+		<input type="radio" name="starRating" value="Stars2.png" checked>Two<br>
+		<input type="radio" name="starRating" value="Stars3.png" checked>Three<br>
+		<input type="radio" name="starRating" value="Star4.png" checked>Four<br>
+		<input type="radio" name="starRating" value="Stars5.png" checked>Five<br>
+
+		</div>
+		<div class="ratings">
+				<h3 class="ratingHeading">Accessibility</h3>
+			<input type="radio" name="starRating2" value="Stars1.png" checked>One<br>
+			<input type="radio" name="starRating2" value="Stars2.png" checked>Two<br>
+			<input type="radio" name="starRating2" value="Stars3.png" checked>Three<br>
+			<input type="radio" name="starRating2" value="Star4.png" checked>Four<br>
+			<input type="radio" name="starRating2" value="Stars5.png" checked>Five<br>
+	
+			</div>
+			<div class="ratings">
+					<h3 class="ratingHeading">Quality of Information</h3>
+				<input type="radio" name="starRating3" value="Stars1.png" checked>One<br>
+				<input type="radio" name="starRating3" value="Stars2.png" checked>Two<br>
+				<input type="radio" name="starRating3" value="Stars3.png" checked>Three<br>
+				<input type="radio" name="starRating3" value="Star4.png" checked>Four<br>
+				<input type="radio" name="starRating3" value="Stars5.png" checked>Five<br>
+		
+				</div>
 
 		<div id="webAddButton">
 			<button th:formaction="@{add-website}">Add Website</button> 
