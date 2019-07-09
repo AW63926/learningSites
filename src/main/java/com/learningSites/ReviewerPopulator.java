@@ -6,7 +6,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 @Component
-public class WebsitePopulator implements CommandLineRunner {
+public class ReviewerPopulator implements CommandLineRunner {
 	
 	@Resource 
 	private ReviewerRepository reviewerRepo;
