@@ -77,6 +77,7 @@ public class Website {
 	
 	public Website(String name, String review) {
 	this.name = name;
+	this.websiteImage = "user.png";
 	this.review = review;
 	
 	}
