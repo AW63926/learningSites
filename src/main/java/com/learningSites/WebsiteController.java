@@ -20,6 +20,12 @@ public class WebsiteController {
 
 	@Resource
 	ReviewRepository reviewRepo;
+	
+	
+	@RequestMapping("/home") 
+	public String home(){
+	    return "index"; 
+	} 
 
 	@RequestMapping("/reviewer")
 	public String findOneReviewer(@RequestParam(value = "id") long id, Model model) throws ReviewersNotFoundException {
