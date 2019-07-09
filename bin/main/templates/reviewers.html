@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -10,10 +11,17 @@
 	<main>
 
 
+<div id="revGrid" th:each="reviewer: ${reviewers}">
+
+	<img id="reviewerImage" th:src = "@{'/img/' + ${reviewer.image}}"/>
 	<div id="revGrid" th:each="reviewer: ${reviewers}">
 
 		<img id="reviewerImage" th:src="@{'/img/' + ${reviewer.image}}" />
 
+
+	<article>
+	<a id="ourNames" th:href="@{/reviewer(id=${reviewer.id})}" th:text ="${reviewer.name}"></a>
+	</article>
 
 		<article>
 			<a id="ourNames" th:href="@{/reviewer(id=${reviewer.id})}"
@@ -59,6 +67,12 @@
 				name="reviewerName" />
 		</div>
 
+<nav>
+	<a href="#about" id="aboutNav">About</a>
+	<a th:href="@{http://localhost:8080/websites}">Websites</a>
+	<a th:href="@{http://localhost:8080/reviewers}" id="contactNav">Reviewers</a>
+
+</nav>
 		<div>
 			<button th:formaction="@{delete-reviewer}">delete reviewer></button>
 		</div>
@@ -77,12 +91,12 @@
 		</div>
 
 	</form>
-	
+
 	<form method="GET">
 	<div>
-	
+
 	<button th:formaction="@{/sort-reviewers}"> sort </button>
-	
+
 	</div>
 </form>
 -->

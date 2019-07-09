@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 
 <html xmlns:th="http://www.thymeleaf.org">
@@ -15,17 +16,11 @@
 			<img id="img" th:src = "@{'/img/' + ${website.image}}"/>
 			<h2 id="heading" th:text="${website.name}"></h2>
 			<p th:text = "${website.review}"></p>
-			<h2 class="ratings">Overall Rating</h2>
-			<img class="starRating" th:src="@{'/img/' + ${website.starRating}}"/>
-			<h2 class="ratings">Accessibility</h2>
-			<img class="starRating" th:src="@{'/img/' + ${website.starRating2}}"/>
-			<h2 class="ratings">Quality of Information</h2>
-			<img class="starRating" th:src="@{'/img/' + ${website.starRating3}}"/>
-			
-			
-			
-		</div> 
-		
+			<img id="starRating" th:src="@{'/img/' + ${website.starRating}}"/>
+
+
+
+		</div>
 
 	<div th:each="reviewer: ${reviewers}">
 		<h2>
@@ -34,7 +29,7 @@
 	</div>
 	<nav>
 			<div id="navText">
-			<a th:href="@{http://localhost:8080/home}" id="aboutNav">Home</a>
+			<a href="#about" id="aboutNav">About</a>
 			<a th:href="@{http://localhost:8080/websites}">Websites</a>
 			<a th:href="@{http://localhost:8080/reviewers}" id="contactNav">Reviewers</a>
 			</div>
