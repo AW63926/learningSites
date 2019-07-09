@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title> A list of Reviews</title>
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
+<body>
+<header>
+	<h1 id="header">Welcome!</h1>
+</header>
+<p id="paragraph">
+    The internet can be DARK!  But we have found some bright spots. This website contains some brief, and hopefully helpful reviews of our favorite learning sites.  
+    If you are like us, you dream of using the world wide web as an instrument of progress, not a tool for....well, tools.  So while you're here, read up on some of our favorites,
+    and add some websites that have helped you along the way.  Thanks for joining us.     
+</p>
+
+
+<nav>
+            <a th:href="@{http://localhost:8080/home}" id="aboutNav">Home</a> 
+            <a th:href="@{http://localhost:8080/websites}">Websites</a> 
+            <a th:href="@{http://localhost:8080/reviewers}" id="contactNav">Reviewers</a>
+
+	</nav>
+
+
+
+</body>
+</html>

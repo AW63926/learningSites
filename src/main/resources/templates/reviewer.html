@@ -13,9 +13,7 @@
 		<p id="bio" th:text = "${reviewer.description}"></p>
 		<img id="profileImg" th:src = "@{'/img/' + ${reviewer.image}}"/>
 	
-	<form method ="POST">
-	<button type="submit" th:value"${reviewer.id}" name="reviewerId" th:formaction="@{del-reviewer}"> delete </button>
-	</form>
+	
 	</div>
 
 	<div  th:each="website: ${websites}">
@@ -30,7 +28,7 @@
 
 	<nav>
 		<div id="navText">
-		<a href="#about" id="aboutNav">About</a>
+		<a th:href="@{http://localhost:8080/home}" id="aboutNav">Home</a>
 		<a th:href="@{http://localhost:8080/websites}">Websites</a>
 		<a th:href="@{http://localhost:8080/reviewers}" id="contactNav">Reviewers</a>
 		

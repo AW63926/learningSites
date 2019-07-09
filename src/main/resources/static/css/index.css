@@ -1,0 +1,39 @@
+nav{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	background-color: rgb(10, 22, 94);
+	
+	display: flex;
+	flex-flow: row;
+	justify-content: center;
+
+}
+nav a {
+    max-width: 700px;
+	padding: 1em 2em;
+	text-decoration: none;
+    color:#fff;
+    
+
+}
+nav a:hover {
+	background: rgb(146, 150, 190);
+}
+
+#navText {
+    max-width: 700px;
+    padding: 1em;
+}
+
+#header {
+    padding-top: 3em;
+    text-align: center;
+}
+#paragraph{
+    max-width: 800px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
