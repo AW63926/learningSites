@@ -27,25 +27,13 @@ nav a:hover {
     padding: 1em;
 }
 
-#h1{
-    padding-top: 2em;
-    text-align: center
+#header {
+    padding-top: 3em;
+    text-align: center;
 }
-
-#contentMain {
-    max-width: 900px;
+#paragraph{
+    max-width: 800px;
+    text-align: center;
     margin-left: auto;
     margin-right: auto;
 }
-
-#img {
-    float: left;
-    padding: 2em;
-}
-
-.starRating{
-    max-width: 350px;
-    max-height: 100px;
-
-}
-

@@ -19,6 +19,10 @@ public class Website {
 	private String review;
 	
 	private String starRating;
+	
+	private String starRating2;
+	
+	private String starRating3;
 
 	@ManyToMany(mappedBy = "websites")
 	private Collection<Reviewer> reviewers;
@@ -67,16 +71,19 @@ public class Website {
 		return true;
 	}
 
-	public Website(String name, String webImage, String review, String starRating) {
+	public Website(String name, String webImage, String review, String starRating, String starRating2, String starRating3) {
 		this.name = name;
 		this.websiteImage = webImage;
 		this.review = review;
 		this.starRating = starRating;
+		this.starRating2 = starRating2;
+		this.starRating3 = starRating3;
 
 	}
 	
 	public Website(String name, String review) {
 	this.name = name;
+	this.websiteImage = "user.png";
 	this.review = review;
 	
 	}
@@ -91,6 +98,22 @@ public class Website {
 
 	public void setStarRating(String starRating) {
 		this.starRating = starRating;
+	}
+
+	public String getStarRating2() {
+		return starRating2;
+	}
+
+	public void setStarRating2(String starRating2) {
+		this.starRating2 = starRating2;
+	}
+
+	public String getStarRating3() {
+		return starRating3;
+	}
+
+	public void setStarRating3(String starRating3) {
+		this.starRating3 = starRating3;
 	}
 
 	

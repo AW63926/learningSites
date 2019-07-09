@@ -13,7 +13,7 @@
 	<h2 id="siteImages">
 		
 			<a id="webLinks" th:href="@{/website(id=${website.id})}"><img class="box" th:src = "@{'/img/' + ${website.image}}"/></a>
-		
+			<p th:text = "${website.name}"></p>
 
 	</h2>
 	
@@ -54,7 +54,7 @@
 
 <nav>
 		<div id="navText">
-		<a href="#about" id="aboutNav">About</a>
+		<a th:href="@{http://localhost:8080/home}" id="aboutNav">Home</a>
 		<a th:href="@{http://localhost:8080/websites}">Websites</a>
 		<a th:href="@{http://localhost:8080/reviewers}" id="contactNav">Reviewers</a>
 		</div>

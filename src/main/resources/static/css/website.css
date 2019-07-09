@@ -43,3 +43,9 @@ nav a:hover {
     padding: 2em;
 }
 
+.starRating{
+    max-width: 350px;
+    max-height: 100px;
+
+}
+
