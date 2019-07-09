@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" type="text/css" href="css/reviewer.css">
+<head>
+	<title>A reviewer</title>
+</head>
+<body>
+	<h1 id="header"></h1>
+	<div id="contentBody">
+	<div  th:each = "reviewer: ${reviewers}">
+		<p id="name" th:text = "${reviewer.name}"></p>
+		<p id="bio" th:text = "${reviewer.description}"></p>
+		<img id="profileImg" th:src = "@{'/img/' + ${reviewer.image}}"/>
+
+
+
+
+	</div>
+
+	<div  th:each="website: ${websites}">
+		<h2 th:text="${website.name}"></h2>
+		<img th:src = "@{'/img/' + ${website.image}}"/>
+		<a th:href="@{/websites}">Back to Websites List</a>
+		<a th:href="@{/reviewer(id=${reviewer.id})}">See review List</a>
+	</div>
+	</div>
+
+	<nav>
+		<div id="navText">
+		<a href="#about" id="aboutNav">About</a>
+		<a th:href="@{http://localhost:8080/websites}">Websites</a>
+		<a th:href="@{http://localhost:8080/reviewers}" id="contactNav">Reviewers</a>
+		</div>
+	</nav>
+
+
+
+
+
+</body>
+</html>

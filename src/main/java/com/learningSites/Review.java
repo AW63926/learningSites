@@ -3,8 +3,8 @@ package com.learningSites;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Review {
@@ -14,6 +14,9 @@ public class Review {
 	private long id;
 
 	private String title;
+	private String accessibility;
+	private String contentRating;
+	private String reviewText;
 
 	@ManyToOne
 	private Reviewer reviewer;
@@ -22,9 +25,62 @@ public class Review {
 
 	}
 
-	public Review(String title, Reviewer reviewer) {
+	public Review(String title, Reviewer reviewer, String accessibility, String contentRating, String reviewText) {
 
 		this.title = title;
+		this.reviewer = reviewer;
+		this.accessibility = accessibility;
+		this.contentRating = contentRating;
+		this.reviewText = reviewText;
+	}
+	
+	
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getAccessibility() {
+		return accessibility;
+	}
+
+	public void setAccessibility(String accessibility) {
+		this.accessibility = accessibility;
+	}
+
+	public String getContentRating() {
+		return contentRating;
+	}
+
+	public void setContentRating(String contentRating) {
+		this.contentRating = contentRating;
+	}
+
+	public String getReviewText() {
+		return reviewText;
+	}
+
+	public void setReviewText(String reviewText) {
+		this.reviewText = reviewText;
+	}
+
+	public Reviewer getReviewer() {
+		return reviewer;
+	}
+
+	public void setReviewer(Reviewer reviewer) {
 		this.reviewer = reviewer;
 	}
 

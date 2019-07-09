@@ -14,9 +14,20 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/sitesStyle.css"/>
+	<title> A List of All Available Reviewers</title>
+	<link rel="stylesheet" type="text/css" href="css/reviewers.css">
 </head>
 <body>
 <h1 class="text-center">A List of Reviewers</h1>
+<body id="body">
+	<h1 id="header">Reviewers</h1>
+	<main>
+
+
+<div id="revGrid" th:each="reviewer: ${reviewers}">
+
+	<img id="reviewerImage" th:src = "@{'/img/' + ${reviewer.image}}"/>
+
 
 <div class="container reviewers">
     <div class="row" th:each="reviewer: ${reviewers}">
@@ -28,5 +39,22 @@
 
     <a th:href="@{/websites}"><h4>Back to Websites</h4></a>
 </div>
+	<article>
+	<a id="ourNames" th:href="@{/reviewer(id=${reviewer.id})}" th:text ="${reviewer.name}"></a>
+	</article>
+
+
+</div>
+
+
+
+<nav>
+	<a href="#about" id="aboutNav">About</a>
+	<a th:href="@{http://localhost:8080/websites}">Websites</a>
+	<a th:href="@{http://localhost:8080/reviewers}" id="contactNav">Reviewers</a>
+
+</nav>
+
+</main>
 </body>
 </html>

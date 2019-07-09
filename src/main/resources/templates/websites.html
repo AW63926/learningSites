@@ -14,23 +14,55 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/sitesStyle.css"/>
+    <link rel="stylesheet" type="text/css" href="css/websites.css">
 </head>
-<body>
-<header>
+<body id="body">
 
-</header>
-<h1 class="text-center" id="home-h1">A List of Learning Websites</h1>
-<div class="container site-list" th:each="website:${websites}">
-
-    <div class="row" >
-            <div class="col-md-3">
-                <a th:href="@{/website(id=${website.id})}"><h4 th:text="${website.name}"></h4></a>
-            </div>
-                <div class="col-md-6">
-                    <img th:src="@{'/img/' + ${website.image}}" width="400px"/>
-                </div>
-            </div>
+<nav>
+    <div id="navText">
+        <a href="#about" id="aboutNav">About</a>
+        <a th:href="@{http://localhost:8080/websites}">Websites</a>
+        <a th:href="@{http://localhost:8080/reviewers}" id="contactNav">Reviewers</a>
     </div>
+</nav>
+
+<!--<nav class="nav">-->
+<!--    <div>-->
+<!--        <ul class="nav justify-content-center">-->
+<!--            <li class="nav-item">-->
+<!--                <a href="#about" id="aboutNav">About</a>-->
+<!--            </li>-->
+<!--            <li class="nav-item">-->
+<!--                <a th:href="@{http://localhost:8080/websites}">Websites</a>-->
+<!--            </li>-->
+<!--            <li class="nav-item">-->
+<!--                <a th:href="@{http://localhost:8080/reviewers}" id="contactNav">Reviewers</a>-->
+<!--            </li>-->
+<!--        </ul>-->
+<!--    </div>-->
+<!--</nav>-->
+<div class="container site-list">
+    <h1 class="text-center" id="home-h1">A List of Learning Websites</h1>
+    <div class="row"  th:each="website:${websites}">
+        <div class="col-md-3">
+            <a th:href="@{/website(id=${website.id})}"><h4 th:text="${website.name}"></h4></a>
+        </div>
+        <div class="col-md-6">
+            <img th:src="@{'/img/' + ${website.image}}" width="400px"/>
+        </div>
+    </div>
+
 </div>
+<!--<div class="container" th:each="website:${websites}">-->
+<!--    <h2>-->
+
+<!--        <a id="webLinks" th:href="@{/website(id=${website.id})}"><img class="box"-->
+<!--                                                                      th:src="@{'/img/' + ${website.image}}"/></a>-->
+<!--    </h2>-->
+<!--</div>-->
+<div id="rLink">
+    <a id="reviewersLink" th:href="@{/reviewers}">A list of Reviewers</a>
+</div>
+
 </body>
 </html>

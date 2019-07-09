@@ -6,11 +6,7 @@
 <body>
 	<h1>A Single Review</h1>
 
-	<div th:each = "review: ${reviews}">
-		<p th:text = "${review.name}"></p>
-		<p th:text = "${review.description}"></p>
-		<a href="http://localhost:8080/show-reviews">Back to home</a>
-	</div>
+	<a href="@{reviews}">Back to home</a>
 
 </body>
 </html>
