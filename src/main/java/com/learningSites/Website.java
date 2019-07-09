@@ -81,10 +81,13 @@ public class Website {
 
 	}
 	
-	public Website(String name, String review) {
+	public Website(String name, String review, String starRating, String starRating2, String starRating3) {
 	this.name = name;
 	this.websiteImage = "user.png";
 	this.review = review;
+	this.starRating = starRating;
+	this.starRating2 = starRating2;
+	this.starRating3 = starRating3;
 	
 	}
 

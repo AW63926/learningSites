@@ -128,10 +128,10 @@ public class ReviewerController {
 	}
 
 	@RequestMapping("/add-website")
-	public String addWebsite(String websiteName, String websiteReview) {
+	public String addWebsite(String websiteName, String websiteReview, String starRating, String starRating2, String starRating3) {
 		Website newWebsite = websiteRepo.findByName(websiteName);
 		if(newWebsite==null) {
-			newWebsite = new Website(websiteName, websiteReview);
+			newWebsite = new Website(websiteName, websiteReview, starRating, starRating2, starRating3);
 			websiteRepo.save(newWebsite);
 		}
 		return "redirect:/websites";
