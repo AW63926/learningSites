@@ -14,49 +14,48 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 		  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<link rel="stylesheet" href="/css/sitesStyle.css"/>
-	<link rel="stylesheet" type="text/css" href="css/website.css">
 </head>
 <body>
-
-	<header>
-
-		<h1 id="h1" >A Learning Website</h1>
-	</header>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+			aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	<div class="collapse navbar-collapse" id="navbarNav">
+		<ul class="navbar-nav">
+			<li class="nav-item">
+				<a class="nav-link" href="#about">About</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" th:href="@{http://localhost:8080/websites}">Websites</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" th:href="@{http://localhost:8080/reviewers}">Reviewers</a>
+			</li>
+		</ul>
+	</div>
+</nav>
 <div class="container">
-	<h1 class="text-center">A Learning Website</h1>
-	<div th:each="website: ${websites}">
-		<h2 th:text="${website.name}"></h2>
-	</div>
-	<div>
-		<a th:href="@{/reviewers}"><h4>Click here for a list of Reviewers</h4></a>
-	</div>
-
-	<div id="contentMain" th:each="website: ${websites}">
-			<img id="img" th:src = "@{'/img/' + ${website.image}}"/>
-			<h2 id="heading" th:text="${website.name}"></h2>
-			<p th:text = "${website.review}"></p>
-			<img id="starRating" th:src="@{'/img/' + ${website.starRating}}"/>
-
-
-
+	<h3 class="text-center home-h3">A Learning Website</h3>
+	<div class="row">
+	<div class="col-md-4" th:each="website: ${websites}">
+		<h3 th:text="${website.name}"></h3>
+			<img th:src = "@{'/img/' + ${website.image}}" width="100%"/>
 		</div>
-
-
-	<a th:href="@{/websites}">Back to Websites List</a>
-
+		<div class="col-md-5" th:each="website: ${websites}">
+			<p th:text = "${website.review}"></p>
+			<a th:href="@{/reviewers}"><h4>List of Reviewers</h4></a>
+		</div>
+		<div class="col-md-3" th:each="website: ${websites}">
+			<img  th:src="@{'/img/' + ${website.starRating}}" width="100%"/>
+			<a th:href="@{/websites}">Back to Websites List</a>
+		</div>
 	<div th:each="reviewer: ${reviewers}">
 		<h2>
 			<a th:href="@{/reviewer(id=${reviewer.id})}" th:text="${reviewer.name}"></a>
 		</h2>
 	</div>
-	<nav>
-			<div id="navText">
-			<a href="#about" id="aboutNav">About</a>
-			<a th:href="@{http://localhost:8080/websites}">Websites</a>
-			<a th:href="@{http://localhost:8080/reviewers}" id="contactNav">Reviewers</a>
-			</div>
-		</nav>
-
+</div>
 </div>
 </body>
 </html>

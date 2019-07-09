@@ -6,11 +6,21 @@
 .site-list .row{
 margin-bottom: 20px;
 }
-#home-h1{
-padding-bottom: 20px;
+.home-h3{
+margin-top: 20px;
+margin-bottom: 60px
 }
+
+.revs-h3{
+margin-top: 60px;
+margin-bottom: 40px
+}
+
 .reviewers li{
 list-style: none;
+}
+.form-control{
+margin-bottom: 20px;
 }
 
 #siteGrid{
@@ -23,35 +33,25 @@ list-style: none;
     max-height: 280px;
     margin-left: auto;
     margin-right: auto;
-    
 }
 
-#body {
-    margin: 0 auto;
-    max-width: 800px;
-}
-
-#header{
-    text-align: center;
-
-}
-
-#reviewersLink{
-    text-decoration: none;
-    padding-top: 8em;
-
-}
-
-#rLink {
-    padding-top: 8em;
-}
-
-#webLinks {
-    text-decoration: none;
-}
-.reviewer h3{
-padding: 20px;
-}
 .reviewer .btn{
 float: right;
+margin-right: 10px;
+margin-top: 60px;
+}
+.bg-light {
+    background-color: #0e2d4c!important;
+}
+.navbar-light .navbar-nav .nav-link {
+    color: #fff;
+}
+.navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show>.nav-link {
+  color: #51aad4;
+}
+.navbar-light .navbar-nav .nav-link:focus {
+    color: #7896c3;;
+}
+.navbar-light .navbar-nav .nav-link:hover {
+    color: #7896c3;
 }

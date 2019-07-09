@@ -7,24 +7,6 @@
 	
 }
 
-
-
-#contentBody{
-    max-width: 900px;
-}
-
-#header {
-    text-align: center;
-}
-
-#profileImg {
-    float: left;
-    padding-right: 3em;
-    padding-top: 3em;
-    padding-bottom: 3em;
-
-}
-
 #name {
     font-size: 3em;
     text-align: center;
@@ -35,31 +17,3 @@
     display: inline;
 }
 
-nav{
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	background-color: rgb(10, 22, 94);
-	
-	display: flex;
-	flex-flow: row;
-	justify-content: center;
-
-}
-nav a {
-    max-width: 700px;
-	padding: 1em 2em;
-	text-decoration: none;
-    color:#fff;
-    
-
-}
-nav a:hover {
-	background: rgb(146, 150, 190);
-}
-
-#navText {
-    max-width: 700px;
-    padding: 1em;
-}
