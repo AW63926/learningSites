@@ -1,5 +1,8 @@
 package com.learningSites;
 
+import static java.lang.String.format;
+
+import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.persistence.Entity;
@@ -119,6 +122,12 @@ public class Website {
 		this.starRating3 = starRating3;
 	}
 
-	
+	public Collection<String> getReviewersUrls() {
+		Collection<String> urls = new ArrayList<>();
+		for (Reviewer r : reviewers) {
+			urls.add(format("/show-websites/%d/reviewers/%s", this.getId(), r.getName()));
+		}
+		return urls;
+	}	
 
 }

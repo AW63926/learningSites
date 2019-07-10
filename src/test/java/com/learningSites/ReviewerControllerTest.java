@@ -142,8 +142,11 @@ public class ReviewerControllerTest {
 	public void shouldAddAdditionalWebsiteToModel() {
 		String websiteName = "testWebsite";
 		String websiteReview = "test web review";
-		underTest.addWebsite(websiteName, websiteReview);
-		Website newWebsite = new Website(websiteName, websiteReview);
+		String websiteStarRating = "test starRating";
+		String websiteStarRating2 = "test starRating2";
+		String websiteStarRating3 = "test starRating3";
+		underTest.addWebsite(websiteName, websiteReview, websiteStarRating, websiteStarRating2, websiteStarRating3);
+		Website newWebsite = new Website(websiteName, websiteReview, websiteStarRating, websiteStarRating2, websiteStarRating3);
 		when(websiteRepo.save(newWebsite)).thenReturn(newWebsite);
 	}
 	@Test 
