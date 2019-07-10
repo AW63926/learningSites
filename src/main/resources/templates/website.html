@@ -45,7 +45,7 @@
 	<div class="row">
 		<div class="col-md-4 offset-md-1">
 			<div th:each="website: ${websites}">
-				<img  th:src = "@{'/img/' + ${website.image}}"/>
+				<img class="siteImage" th:src = "@{'/img/' + ${website.image}}"/>
 			</div>
 		</div>
 		<div class="col-md-7">
@@ -86,5 +86,7 @@
 			<a th:href="@{/reviewer(id=${reviewer.id})}" th:text="${reviewer.name}"></a>
 		</h2>
 	</div>
+<footer class="footer fixed-bottom mt-auto py-3">
+</footer>
 </body>
 </html>
