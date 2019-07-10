@@ -38,19 +38,49 @@ nav a:hover {
 
 }
 */
-.box{
-    max-width: 200px
-}
-#header{
-    padding: 2em;
+
+.header{
     text-align: center;
+    padding-top: 5rem;
 }
 .website-container h5{
    margin-left: 42px;
     padding: 10px;
 }
 .website-container h4{
-margin-bottom: 36px;
+margin-bottom: 40px;
+padding-top: 4rem;
+}
+.ratings-container{
+margin-bottom: 0px;
+padding-top: 0rem;
+}
+.ratings-container .header {
+                       text-align: center;
+                       padding-top: 1rem;
+                       padding-bottom: 30px;
+                   }
+#reviewImage{
+	   max-width: 200px;
+           max-height: 200px;
+           padding-top: 24px;
+           padding-left: 10px;
+           padding-right: 10px;
+           padding-bottom: 2px;
 }
 
+
+#revGrid{
+	   max-width: 634px;
+           margin-left: 20px;
+           display: inline-grid;
+           padding-left: 2em;
+           padding-right: 2em;
+           max-height: 320px;
+}
+
+.form-container{
+margin-top: 40px;
+padding-bottom: 40px;
+}
 

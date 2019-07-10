@@ -38,13 +38,23 @@
     </div>
 </nav>
 <header>
-    <h1 id="header">Learning Websites</h1>
+    <h2 class="header">Learning Websites</h2>
 </header>
 <div class="container website-container">
     <div class="row">
-        <div class="col-md-1"></div>
-        <div class="col-md-5">
-            <h4>Review a New Learning Website</h4>
+        <div class="col-md-11">
+            <div id="revGrid" th:each="website:${websites}">
+                <a id="webLinks" th:href="@{/website(id=${website.id})}"><img id="reviewImage"
+                                                                              th:src="@{'/img/' + ${website.image}}"
+                                                                              width="165px"/></a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container form-container">
+    <h2 class="header">Create Website to Review or Delete a Website</h2>
+    <div class="row">
+        <div class="col-md-6">
             <form method="POST">
                 <div class="form-group">
                     <label for="siteName">Enter Website Name: </label>
@@ -58,6 +68,8 @@
                     <button class="btn btn-primary" th:formaction="@{add-website}">Add Website</button>
                 </div>
             </form>
+        </div>
+        <div class="col-md-6">
             <form method="POST">
                 <div class="form-group">
                     <label for="websiteName">Enter Website Name:</label>
@@ -68,16 +80,52 @@
                 </div>
             </form>
         </div>
-        <div class="col-md-2"></div>
+    </div>
+</div>
+<div class="container ratings-container">
+    <h2 class="header">Rate Your New Website</h2>
+    <div class="row">
         <div class="col-md-4">
-            <div th:each="website:${websites}">
-                <a id="webLinks" th:href="@{/website(id=${website.id})}"><img class="box"
-                                                                              th:src="@{'/img/' + ${website.image}}"
-                                                                              width="165px"/></a>
-                <h5 th:text="${website.name}"></h5>
-            </div>
+            <form method="POST">
+                <div class="ratings">
+                    <h3 class="ratingHeading">Overall Rating</h3>
+                    <input type="radio" name="starRating" value="Stars1.png" checked>One<br>
+                    <input type="radio" name="starRating" value="Stars2.png" checked>Two<br>
+                    <input type="radio" name="starRating" value="Stars3.png" checked>Three<br>
+                    <input type="radio" name="starRating" value="Star4.png" checked>Four<br>
+                    <input type="radio" name="starRating" value="Stars5.png" checked>Five<br>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-4">
+            <form method="POST">
+                <div class="ratings">
+                    <h3 class="ratingHeading">Accessibility</h3>
+                    <input type="radio" name="starRating2" value="Stars1.png" checked>One<br>
+                    <input type="radio" name="starRating2" value="Stars2.png" checked>Two<br>
+                    <input type="radio" name="starRating2" value="Stars3.png" checked>Three<br>
+                    <input type="radio" name="starRating2" value="Star4.png" checked>Four<br>
+                    <input type="radio" name="starRating2" value="Stars5.png" checked>Five<br>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-4">
+           <form method="post">
+               <div class="ratings">
+                   <h3 class="ratingHeading">Quality of Information</h3>
+                   <input type="radio" name="starRating3" value="Stars1.png" checked>One<br>
+                   <input type="radio" name="starRating3" value="Stars2.png" checked>Two<br>
+                   <input type="radio" name="starRating3" value="Stars3.png" checked>Three<br>
+                   <input type="radio" name="starRating3" value="Star4.png" checked>Four<br>
+                   <input type="radio" name="starRating3" value="Stars5.png" checked>Five<br>
+               </div>
+           </form>
         </div>
     </div>
 </div>
+<footer class="footer mt-auto py-3">
+
+
+</footer>
 </body>
 </html>

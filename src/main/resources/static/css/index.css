@@ -20,3 +20,8 @@
 .navbar-brand{
 font-size: 24px;
 }
+
+.footer{
+background-color: #092b4e;
+min-height: 40px;
+}
