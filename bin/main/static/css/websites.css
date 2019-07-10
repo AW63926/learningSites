@@ -1,48 +1,47 @@
-nav{
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	background-color: rgb(10, 22, 94);
-	
-	display: flex;
-	flex-flow: row;
-	justify-content: center;
 
-}
-nav a {
-    max-width: 700px;
-	padding: 1em 2em;
-	text-decoration: none;
-    color:#fff;
-    
-
-}
-nav a:hover {
-	background: rgb(146, 150, 190);
-}
-
-#navText {
-    max-width: 700px;
-    padding: 1em;
-}
-
-#header{
-    padding: 2em;
+.header{
     text-align: center;
+    padding-top: 7rem;
+    font-family: candara;
+}
+.website-container h5{
+   margin-left: 42px;
+    padding: 10px;
+}
+.website-container h4{
+margin-bottom: 40px;
+padding-top: 4rem;
+}
+.ratings-container{
+margin-bottom: 40px;
+padding-top: 0rem;
+}
+.form-container .header{
+padding-top: 2rem;
+padding-bottom: 25px;
+}
+.ratings-container .header {
+   text-align: center;
+   padding-top: 0rem;
+   padding-bottom: 30px;
+                   }
+.reviewImage{
+	   max-width: 200px;
+           max-height: 200px;
+           padding-top: 24px;
+           width: 120px;
 }
 
-.container {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 50%;
-    text-align: center;
-	
+
+#revGrid{
+	   max-width: 634px;
+           margin-left: 7rem;
+           display: inline-grid;
+           max-height: 320px;
 }
 
-.box{
-    max-width: 200px
+.form-container{
+margin-top: 40px;
+padding-bottom: 40px;
 }
-
 
