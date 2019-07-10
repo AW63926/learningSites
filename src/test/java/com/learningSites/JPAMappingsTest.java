@@ -34,7 +34,7 @@ public class JPAMappingsTest {
 
 	@Test
 	public void shouldSaveAndLoadWebsite() {
-		Website website = websiteRepo.save(new Website("website", "webImage","review", "StarRating"));
+		Website website = websiteRepo.save(new Website("website", "webImage","review", "StarRating","starRating2", "starRating3"));
 		long websiteId = website.getId();
 
 		entityManager.flush();
@@ -47,7 +47,7 @@ public class JPAMappingsTest {
 
 	@Test
 	public void shouldGenerateWebsiteById() {
-		Website website = websiteRepo.save(new Website("website","webImage","review", "StarRating"));
+		Website website = websiteRepo.save(new Website("website","webImage","review", "StarRating","starRating2", "starRating3"));
 		long websiteId = website.getId();
 
 		entityManager.flush();
@@ -73,8 +73,8 @@ public class JPAMappingsTest {
 
 	@Test
 	public void shouldEstablishReviewerToWebsiteRelationships() {
-		Website udemy = websiteRepo.save(new Website("Udemy", "webImage","review", "StarRating"));
-		Website lynda = websiteRepo.save(new Website("Lynda","webImage","review", "StarRating"));
+		Website udemy = websiteRepo.save(new Website("Udemy", "webImage","review", "StarRating","starRating2", "starRating3"));
+		Website lynda = websiteRepo.save(new Website("Lynda","webImage","review", "StarRating","starRating2", "starRating3"));
 
 		Reviewer reviewer = new Reviewer();
 		reviewer = reviewerRepo.save(reviewer);
@@ -91,7 +91,7 @@ public class JPAMappingsTest {
 
 	@Test
 	public void shouldFindReviewerForWebsite() {
-		Website udemy = websiteRepo.save(new Website("udemy", "webImage","review", "StarRating"));
+		Website udemy = websiteRepo.save(new Website("udemy", "webImage","review", "StarRating", "starRating2", "starRating3"));
 
 		Reviewer mary = reviewerRepo.save(new Reviewer("Mary", "review of Udemy","udemyLogo_200.png"));
 		Reviewer adam = reviewerRepo.save(new Reviewer("Adam", "review of W3Schools", "W3logo_200.png"));
@@ -107,7 +107,7 @@ public class JPAMappingsTest {
 
 	@Test
 	public void shouldFindReviewersForWebsiteId() {
-		Website udemy = websiteRepo.save(new Website("udemy","webImage","review", "StarRating"));
+		Website udemy = websiteRepo.save(new Website("udemy","webImage","review", "StarRating", "starRating2", "starRating3"));
 		long websiteId = udemy.getId();
 
 		Reviewer mary = reviewerRepo.save(new Reviewer("Mary", "review of Udemy","udemyLogo_200.png"));

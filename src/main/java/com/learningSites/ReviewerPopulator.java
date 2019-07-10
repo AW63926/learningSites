@@ -35,7 +35,7 @@ public class ReviewerPopulator implements CommandLineRunner {
 		Reviewer mary = new Reviewer ("Mary","Having great resources for reference is not only helpful to tenured developers, but is particularly helpful to junior developers like myself. This has made these websites an excellent tool to learn and reference.", "mary.JPG", udemy);
 		mary = reviewerRepo.save(mary);
 		
-		Reviewer grace = new Reviewer ("Grace","In my software developer apprentice journey, an array of online courses have provided knowledge to me that have guided my learning experience. Here i discuss how this experience has reflected with each learning site","grace.JPG", udemy);
+		Reviewer grace = new Reviewer ("Grace","In my software developer apprentice journey, several online courses have been a great resource for information and practice. Here I discuss how this experience has reflected with each learning site","grace.JPG", udemy);
 		grace = reviewerRepo.save(grace);
 		
 		

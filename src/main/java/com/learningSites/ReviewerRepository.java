@@ -13,4 +13,6 @@ public interface ReviewerRepository extends CrudRepository<Reviewer, Long> {
 	Reviewer findByName(String reviewerName);
 
 	Collection<Reviewer> findAllByOrderByNameAsc();
+
+	Reviewer findByNameIgnoreCaseLike(String reviewerName);
 }

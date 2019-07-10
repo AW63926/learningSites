@@ -7,6 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 //import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 //import javax.persistence.OneToMany;
 
 @Entity
@@ -21,6 +23,7 @@ public class Review {
 	private String contentRating;
 	private String reviewText;
 
+	@JsonIgnore
 	@ManyToOne
 	private Reviewer reviewer;
 	
