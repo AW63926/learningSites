@@ -1,6 +1,7 @@
 package com.learningSites;
 
 import java.util.HashSet;
+import static java.lang.String.format;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,6 +11,7 @@ import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 
@@ -30,7 +32,7 @@ public class Reviewer {
 	@JsonIgnore
 	@OneToMany(mappedBy = "reviewer")
 	private Collection<Review> reviews;
-	
+
 	public Reviewer() {
 
 	}
@@ -47,9 +49,33 @@ public class Reviewer {
 		return description;
 
 	}
-	
+
 	public String getImage() {
 		return imageName;
+	}
+
+	public Collection<Website> getWebsites() {
+		return websites;
+	}
+
+	public Collection<Review> getReviews() {
+
+		return reviews;
+	}
+
+	public Collection<String> getWebsitesUrls() {
+		Collection<String> urls = new ArrayList<>();
+		for (Website w : websites) {
+			urls.add(format("/show-reviewers/%d/websites/%s", this.getId(), w.getName()));
+		}
+		return urls;
+	}
+
+	public Reviewer(String name, String description, String imageName, Website... websites) {
+		this.name = name;
+		this.description = description;
+		this.imageName = imageName;
+		this.websites = new HashSet<>(Arrays.asList(websites));
 	}
 
 	@Override
@@ -75,22 +101,6 @@ public class Reviewer {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
-	}
-
-	public Reviewer(String name, String description, String imageName, Website... websites) {
-		this.name = name;
-		this.description = description;
-		this.imageName = imageName;
-		this.websites = new HashSet<>(Arrays.asList(websites));
-	}
-
-	public Collection<Website> getWebsites() {
-		return websites;
-	}
-
-	public Collection<Review> getReviews() {
-
-		return reviews;
 	}
 
 }
