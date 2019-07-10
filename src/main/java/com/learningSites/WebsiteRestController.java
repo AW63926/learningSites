@@ -10,28 +10,30 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/show-reviewers")
-public class ReviewerRestController {
+@RequestMapping("/show-websites")
+
+public class WebsiteRestController {
 
 	@Resource
 	private ReviewerRepository reviewerRepo;
-	
-	@Resource 
+
+	@Resource
 	private WebsiteRepository websiteRepo;
-	
+
 	@RequestMapping("")
-	public Iterable<Reviewer>findAllCourses(){
-		return reviewerRepo.findAll();
+	public Iterable<Website> findAllWebsites() {
+		return websiteRepo.findAll();
 	}
-	
+
 	@RequestMapping("/{id}")
-	public Optional<Reviewer>findOneReviewer(@PathVariable long id){
-		return reviewerRepo.findById(id);
+	public Optional<Website> findOneWebsite(@PathVariable long id) {
+		return websiteRepo.findById(id);
 	}
-	
-	@RequestMapping("/websites/{websiteName}")
-	public Collection<Reviewer>findAllReviewersByWebsite(@PathVariable(value="websiteName") String websiteName) {
+
+	@RequestMapping("/{websiteName}/reviewers")
+	public Collection<Reviewer> findAllReviewersByWebsite(@PathVariable(value = "websiteName") String websiteName) {
 		Website website = websiteRepo.findByNameIgnoreCaseLike(websiteName);
-				return reviewerRepo.findByWebsitesContains(website);
+		return reviewerRepo.findByWebsitesContains(website);
 	}
+
 }
