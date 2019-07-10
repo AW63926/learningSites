@@ -1,47 +1,8 @@
-/*nav{
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	background-color: rgb(10, 22, 94);
-
-	display: flex;
-	flex-flow: row;
-	justify-content: center;
-
-}
-nav a {
-    max-width: 700px;
-	padding: 1em 2em;
-	text-decoration: none;
-    color:#fff;
-
-
-}
-nav a:hover {
-	background: rgb(146, 150, 190);
-}
-
-#navText {
-    max-width: 700px;
-    padding: 1em;
-}
-
-
-
-.container {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 50%;
-    text-align: center;
-
-}
-*/
 
 .header{
     text-align: center;
-    padding-top: 5rem;
+    padding-top: 7rem;
+    font-family: candara;
 }
 .website-container h5{
    margin-left: 42px;
@@ -52,30 +13,30 @@ margin-bottom: 40px;
 padding-top: 4rem;
 }
 .ratings-container{
-margin-bottom: 0px;
+margin-bottom: 40px;
 padding-top: 0rem;
 }
+.form-container .header{
+padding-top: 2rem;
+padding-bottom: 25px;
+}
 .ratings-container .header {
-                       text-align: center;
-                       padding-top: 1rem;
-                       padding-bottom: 30px;
+   text-align: center;
+   padding-top: 0rem;
+   padding-bottom: 30px;
                    }
-#reviewImage{
+.reviewImage{
 	   max-width: 200px;
            max-height: 200px;
            padding-top: 24px;
-           padding-left: 10px;
-           padding-right: 10px;
-           padding-bottom: 2px;
+           width: 120px;
 }
 
 
 #revGrid{
 	   max-width: 634px;
-           margin-left: 20px;
+           margin-left: 7rem;
            display: inline-grid;
-           padding-left: 2em;
-           padding-right: 2em;
            max-height: 320px;
 }
 
