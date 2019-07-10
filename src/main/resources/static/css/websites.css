@@ -1,10 +1,10 @@
-nav{
+/*nav{
 	position: fixed;
 	top: 0;
 	left: 0;
 	width: 100%;
 	background-color: rgb(10, 22, 94);
-	
+
 	display: flex;
 	flex-flow: row;
 	justify-content: center;
@@ -15,7 +15,7 @@ nav a {
 	padding: 1em 2em;
 	text-decoration: none;
     color:#fff;
-    
+
 
 }
 nav a:hover {
@@ -27,10 +27,7 @@ nav a:hover {
     padding: 1em;
 }
 
-#header{
-    padding: 2em;
-    text-align: center;
-}
+
 
 .container {
     display: block;
@@ -38,11 +35,22 @@ nav a:hover {
     margin-right: auto;
     width: 50%;
     text-align: center;
-	
-}
 
+}
+*/
 .box{
     max-width: 200px
+}
+#header{
+    padding: 2em;
+    text-align: center;
+}
+.website-container h5{
+   margin-left: 42px;
+    padding: 10px;
+}
+.website-container h4{
+margin-bottom: 36px;
 }
 
 

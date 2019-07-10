@@ -1,98 +1,123 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>A List of All Available Reviewers</title>
-<link rel="stylesheet" type="text/css" href="css/reviewers.css">
+    <title>A List of All Available Reviewers</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/reviewers.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
 </head>
-<body id="body">
-	<h1 id="header">Reviewers</h1>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Learning Sites Review</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{http://localhost:8080/home}">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{http://localhost:8080/websites}">Websites</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{http://localhost:8080/reviewers}">Reviewers</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<h1 id="header">Reviewers</h1>
 
-	<main>
+<div class="container">
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-11">
+            <div id="revGrid" th:each="reviewer: ${reviewers}">
+                <img id="reviewerImage" th:src="@{'/img/' + ${reviewer.image}}"/>
+                <article>
+                    <a id="ourNames" th:href="@{/reviewer(id=${reviewer.id})}"
+                       th:text="${reviewer.name}"></a>
+                </article>
+            </div>
+        </div>
+    </div>
 
 
-	<div id="revGrid" th:each="reviewer: ${reviewers}">
+    <!--
+    <form method="POST">
 
-		<img id="reviewerImage" th:src="@{'/img/' + ${reviewer.image}}" />
+        <div>
+            <label>Enter Reviewer Name:</label> <input type="text"
+                name="reviewerName" />
+        </div>
 
+        <div>
+            <label>Enter Reviewer Description:</label> <input type="text"
+                name="reviewerDescription" />
+        </div>
 
-		<article>
-			<a id="ourNames" th:href="@{/reviewer(id=${reviewer.id})}"
-				th:text="${reviewer.name}"></a>
-		</article>
+        <div>
+            <label>Enter Reviewer ImageName:</label> <input type="text"
+                name="reviewerImageName" />
+        </div>
 
+        <div>
+            <label>Enter website:</label> <input type="text" name="websiteName" />
+        </div>
 
-	</div>
-	<!--
-	<form method="POST">
+        <div>
+            <button th:formaction="@{add-reviewer}">add reviewer></button>
+        </div>
 
-		<div>
-			<label>Enter Reviewer Name:</label> <input type="text"
-				name="reviewerName" />
-		</div>
+    </form>
 
-		<div>
-			<label>Enter Reviewer Description:</label> <input type="text"
-				name="reviewerDescription" />
-		</div>
+    </div>
 
-		<div>
-			<label>Enter Reviewer ImageName:</label> <input type="text"
-				name="reviewerImageName" />
-		</div>
+    <form method="POST">
 
-		<div>
-			<label>Enter website:</label> <input type="text" name="websiteName" />
-		</div>
+        <div>
+            <label>Enter Reviewer Name:</label> <input type="text"
+                name="reviewerName" />
+        </div>
 
-		<div>
-			<button th:formaction="@{add-reviewer}">add reviewer></button>
-		</div>
+        <div>
+            <button th:formaction="@{delete-reviewer}">delete reviewer></button>
+        </div>
 
-	</form>
+    </form>
 
-	</div>
+    <form method="GET">
 
-	<form method="POST">
+        <div>
+            <label>Enter Website Name:</label> <input type="text"
+                name="websiteName" />
+        </div>
 
-		<div>
-			<label>Enter Reviewer Name:</label> <input type="text"
-				name="reviewerName" />
-		</div>
+        <div>
+            <button th:formaction="@{find-by-website}">find reviewer></button>
+        </div>
 
-		<div>
-			<button th:formaction="@{delete-reviewer}">delete reviewer></button>
-		</div>
+    </form>
 
-	</form>
+    <form method="GET">
+    <div>
 
-	<form method="GET">
+    <button th:formaction="@{/sort-reviewers}"> sort </button>
 
-		<div>
-			<label>Enter Website Name:</label> <input type="text"
-				name="websiteName" />
-		</div>
-
-		<div>
-			<button th:formaction="@{find-by-website}">find reviewer></button>
-		</div>
-
-	</form>
-	
-	<form method="GET">
-	<div>
-	
-	<button th:formaction="@{/sort-reviewers}"> sort </button>
-	
-	</div>
+    </div>
 </form>
 -->
-	<nav>
-		<a th:href="@{http://localhost:8080/home}" id="aboutNav">Home</a> <a
-			th:href="@{http://localhost:8080/websites}">Websites</a> <a
-			th:href="@{http://localhost:8080/reviewers}" id="contactNav">Reviewers</a>
-
-	</nav>
-
-	</main>
+</div>
 </body>
 </html>
