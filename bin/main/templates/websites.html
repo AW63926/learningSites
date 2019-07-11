@@ -50,6 +50,7 @@
             </div>
         </div>
     </div>
+
 </div>
 <div class="container form-container">
     <h2 class="header">Create Website to Review or Delete a Website</h2>
@@ -65,6 +66,47 @@
                     <textarea class="form-control" type="textarea" name="websiteReview" id="review"></textarea>
                 </div>
                 <div class="form-group">
+					<div class="container ratings-container">
+    <h2 class="header">Rate Your New Website</h2>
+    <div class="row">
+        <div class="col-md-4">
+            
+                <div class="ratings">
+                    <h3 class="ratingHeading">Overall Rating</h3>
+                    <input type="radio" name="starRating" value="Stars1.png" checked>One<br>
+                    <input type="radio" name="starRating" value="Stars2.png" checked>Two<br>
+                    <input type="radio" name="starRating" value="Stars3.png" checked>Three<br>
+                    <input type="radio" name="starRating" value="Star4.png" checked>Four<br>
+                    <input type="radio" name="starRating" value="Stars5.png" checked>Five<br>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-4">
+           
+                <div class="ratings">
+                    <h3 class="ratingHeading">Accessibility</h3>
+                    <input type="radio" name="starRating2" value="Stars1.png" checked>One<br>
+                    <input type="radio" name="starRating2" value="Stars2.png" checked>Two<br>
+                    <input type="radio" name="starRating2" value="Stars3.png" checked>Three<br>
+                    <input type="radio" name="starRating2" value="Star4.png" checked>Four<br>
+                    <input type="radio" name="starRating2" value="Stars5.png" checked>Five<br>
+                </div>
+            
+        </div>
+        <div class="col-md-4">
+            
+                <div class="ratings">
+                    <h3 class="ratingHeading">Quality of Information</h3>
+                    <input type="radio" name="starRating3" value="Stars1.png" checked>One<br>
+                    <input type="radio" name="starRating3" value="Stars2.png" checked>Two<br>
+                    <input type="radio" name="starRating3" value="Stars3.png" checked>Three<br>
+                    <input type="radio" name="starRating3" value="Star4.png" checked>Four<br>
+                    <input type="radio" name="starRating3" value="Stars5.png" checked>Five<br>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
                     <button class="btn btn-primary" th:formaction="@{add-website}">Add Website</button>
                 </div>
             </form>
@@ -82,47 +124,8 @@
         </div>
     </div>
 </div>
-<div class="container ratings-container">
-    <h2 class="header">Rate Your New Website</h2>
-    <div class="row">
-        <div class="col-md-4">
-            <form method="POST">
-                <div class="ratings">
-                    <h3 class="ratingHeading">Overall Rating</h3>
-                    <input type="radio" name="starRating" value="Stars1.png" checked>One<br>
-                    <input type="radio" name="starRating" value="Stars2.png" checked>Two<br>
-                    <input type="radio" name="starRating" value="Stars3.png" checked>Three<br>
-                    <input type="radio" name="starRating" value="Star4.png" checked>Four<br>
-                    <input type="radio" name="starRating" value="Stars5.png" checked>Five<br>
-                </div>
-            </form>
-        </div>
-        <div class="col-md-4">
-            <form method="POST">
-                <div class="ratings">
-                    <h3 class="ratingHeading">Accessibility</h3>
-                    <input type="radio" name="starRating2" value="Stars1.png" checked>One<br>
-                    <input type="radio" name="starRating2" value="Stars2.png" checked>Two<br>
-                    <input type="radio" name="starRating2" value="Stars3.png" checked>Three<br>
-                    <input type="radio" name="starRating2" value="Star4.png" checked>Four<br>
-                    <input type="radio" name="starRating2" value="Stars5.png" checked>Five<br>
-                </div>
-            </form>
-        </div>
-        <div class="col-md-4">
-            <form method="post">
-                <div class="ratings">
-                    <h3 class="ratingHeading">Quality of Information</h3>
-                    <input type="radio" name="starRating3" value="Stars1.png" checked>One<br>
-                    <input type="radio" name="starRating3" value="Stars2.png" checked>Two<br>
-                    <input type="radio" name="starRating3" value="Stars3.png" checked>Three<br>
-                    <input type="radio" name="starRating3" value="Star4.png" checked>Four<br>
-                    <input type="radio" name="starRating3" value="Stars5.png" checked>Five<br>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
+
+
 <footer class="footer mt-auto py-3">
 </footer>
 </body>

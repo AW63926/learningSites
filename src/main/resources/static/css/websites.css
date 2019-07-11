@@ -22,7 +22,7 @@ padding-bottom: 25px;
 }
 .ratings-container .header {
    text-align: center;
-   padding-top: 0rem;
+   padding-top: 2rem;
    padding-bottom: 30px;
                    }
 .reviewImage{
@@ -43,5 +43,13 @@ padding-bottom: 25px;
 .form-container{
 margin-top: 40px;
 padding-bottom: 40px;
+}
+.websiteSiteName{
+padding-top: 1rem !important;
+ margin-left: 8px;
+}
+.ratingHeading{
+font-size: 18px;
+ line-height: 25px;
 }
 
