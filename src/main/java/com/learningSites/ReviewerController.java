@@ -6,8 +6,15 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import com.learningSites.ReviewNotFoundException;
+import com.learningSites.ReviewersNotFoundException;
+import com.learningSites.WebsiteNotFoundException;
+
 
 @Controller
 public class ReviewerController {
@@ -155,6 +162,16 @@ public class ReviewerController {
 		return "redirect:/websites";
 
 	}
-		
+
+	@RequestMapping(path="/websites/{websiteName}", method=RequestMethod.POST)
+	public String addWebsite(@PathVariable String websiteName, String websiteReview, String starRating, String starRating2, String starRating3, Model model) {
+		Website websiteToAdd = websiteRepo.findByName(websiteName);
+		if(websiteToAdd == null) {
+			websiteToAdd = new Website(websiteName, websiteReview, starRating, starRating2, starRating3);
+			websiteRepo.save(websiteToAdd);
+		}
+		model.addAttribute("websites", websiteRepo.findAll());
+		return "partials/websites-list-added";
+		}
 	}
 

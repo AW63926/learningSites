@@ -1,5 +1,6 @@
 package com.learningSites;
 
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -9,10 +10,15 @@ import java.util.Optional;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.ui.Model;
+
+import com.learningSites.ReviewNotFoundException;
+import com.learningSites.ReviewersNotFoundException;
+import com.learningSites.WebsiteNotFoundException;
 
 public class ReviewerControllerTest {
 
@@ -115,15 +121,16 @@ public class ReviewerControllerTest {
 	
 	@Test 
 	public void shouldAddAdditionalReviewersToModel() {
-		String websiteName = "website name";
-		Website newWebsite = websiteRepo.findByName(websiteName);
+		String websiteName = "new websiteName";
 		String reviewerName = "new reviewer";
-		String reviewerDescription = "new reviewer description";
-		String reviewerImageName = "new reviewer imageName";
+		String reviewerDescription = "new Description";
+		String reviewerImageName = "new ImageName";	
 		underTest.addReviewer(reviewerName, reviewerDescription, reviewerImageName, websiteName);
-		Reviewer newReviewer = new Reviewer(reviewerName, reviewerDescription, reviewerImageName, newWebsite);
-		when(reviewerRepo.save(newReviewer)).thenReturn(newReviewer);
 		
+		ArgumentCaptor<Reviewer> reviewerArgument = ArgumentCaptor.forClass(Reviewer.class);
+		verify(reviewerRepo).save(reviewerArgument.capture());
+		assertEquals("new reviewer", reviewerArgument.getValue().getName());
+	
 	}
 	@Test 
 	public void shouldRemoveReviewerFromModelByName() {

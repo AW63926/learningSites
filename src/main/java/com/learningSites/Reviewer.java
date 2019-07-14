@@ -10,6 +10,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.learningSites.Review;
+import com.learningSites.Website;
 
 import java.util.ArrayList;
 import java.util.Arrays;
