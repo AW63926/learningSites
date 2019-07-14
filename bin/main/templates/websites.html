@@ -38,7 +38,7 @@
     </div>
 </nav>
 <header>
-    <h2 class="header">Learning Websites</h2>
+    <h3 class="header">Learning Websites</h3>
 </header>
 <div class="container website-container">
     <div class="row">
@@ -47,15 +47,15 @@
                 <a th:href="@{/website(id=${website.id})}"><img class="reviewImage"
                                                                 th:src="@{'/img/' + ${website.image}}"
                                                                 width="165px"/></a>
+                <h4 class="websiteSiteName" th:text="${website.name}"></h4>
             </div>
         </div>
     </div>
-
 </div>
 <div class="container form-container">
-    <h2 class="header">Create Website to Review or Delete a Website</h2>
     <div class="row">
         <div class="col-md-6">
+            <h3 class="header">Create a Website to Review</h3>
             <form method="POST">
                 <div class="form-group">
                     <label for="siteName">Enter Website Name: </label>
@@ -67,7 +67,7 @@
                 </div>
                 <div class="form-group">
 					<div class="container ratings-container">
-    <h2 class="header">Rate Your New Website</h2>
+    <h3 class="header">Rate Your New Website</h3>
     <div class="row">
         <div class="col-md-4">
             
@@ -76,24 +76,24 @@
                     <input type="radio" name="starRating" value="Stars1.png" checked>One<br>
                     <input type="radio" name="starRating" value="Stars2.png" checked>Two<br>
                     <input type="radio" name="starRating" value="Stars3.png" checked>Three<br>
-                    <input type="radio" name="starRating" value="Star4.png" checked>Four<br>
+                    <input type="radio" name="starRating" value="Stars4.png" checked>Four<br>
                     <input type="radio" name="starRating" value="Stars5.png" checked>Five<br>
                 </div>
-            </form>
+
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
            
                 <div class="ratings">
                     <h3 class="ratingHeading">Accessibility</h3>
                     <input type="radio" name="starRating2" value="Stars1.png" checked>One<br>
                     <input type="radio" name="starRating2" value="Stars2.png" checked>Two<br>
                     <input type="radio" name="starRating2" value="Stars3.png" checked>Three<br>
-                    <input type="radio" name="starRating2" value="Star4.png" checked>Four<br>
+                    <input type="radio" name="starRating2" value="Stars4.png" checked>Four<br>
                     <input type="radio" name="starRating2" value="Stars5.png" checked>Five<br>
                 </div>
             
         </div>
-        <div class="col-md-4">
+        <div class="col-md-5">
             
                 <div class="ratings">
                     <h3 class="ratingHeading">Quality of Information</h3>
@@ -103,7 +103,6 @@
                     <input type="radio" name="starRating3" value="Star4.png" checked>Four<br>
                     <input type="radio" name="starRating3" value="Stars5.png" checked>Five<br>
                 </div>
-            </form>
         </div>
     </div>
 </div>
@@ -112,6 +111,7 @@
             </form>
         </div>
         <div class="col-md-6">
+            <h2 class="header">Delete a Website</h2>
             <form method="POST">
                 <div class="form-group">
                     <label for="websiteName">Enter Website Name:</label>
@@ -124,7 +124,6 @@
         </div>
     </div>
 </div>
-
 
 <footer class="footer mt-auto py-3">
 </footer>
