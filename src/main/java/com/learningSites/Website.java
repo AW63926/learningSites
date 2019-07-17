@@ -1,5 +1,8 @@
 package com.learningSites;
 
+import static java.lang.String.format;
+
+import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.persistence.Entity;
@@ -15,8 +18,14 @@ public class Website {
 	private Long id;
 
 	private String name;
-	
+
 	private String review;
+
+	private String starRating;
+
+	private String starRating2;
+
+	private String starRating3;
 
 	@ManyToMany(mappedBy = "websites")
 	private Collection<Reviewer> reviewers;
@@ -31,14 +40,70 @@ public class Website {
 	public String getName() {
 		return name;
 	}
-	
+
 	public String getImage() {
 		return websiteImage;
 	}
 
 	public Website() {
 	}
-	
+
+	public Website(String name, String webImage, String review, String starRating, String starRating2,
+			String starRating3) {
+		this.name = name;
+		this.websiteImage = webImage;
+		this.review = review;
+		this.starRating = starRating;
+		this.starRating2 = starRating2;
+		this.starRating3 = starRating3;
+
+	}
+
+	public Website(String name, String review, String starRating, String starRating2, String starRating3) {
+		this.name = name;
+		this.websiteImage = "user.png";
+		this.review = review;
+		this.starRating = starRating;
+		this.starRating2 = starRating2;
+		this.starRating3 = starRating3;
+
+	}
+
+	public String getReview() {
+		return review;
+	}
+
+	public String getStarRating() {
+		return starRating;
+	}
+
+	public void setStarRating(String starRating) {
+		this.starRating = starRating;
+	}
+
+	public String getStarRating2() {
+		return starRating2;
+	}
+
+	public void setStarRating2(String starRating2) {
+		this.starRating2 = starRating2;
+	}
+
+	public String getStarRating3() {
+		return starRating3;
+	}
+
+	public void setStarRating3(String starRating3) {
+		this.starRating3 = starRating3;
+	}
+
+	public Collection<String> getReviewersUrls() {
+		Collection<String> urls = new ArrayList<>();
+		for (Reviewer r : reviewers) {
+			urls.add(format("/show-websites/%d/reviewers/%s", this.getId(), r.getName()));
+		}
+		return urls;
+	}
 
 	@Override
 	public int hashCode() {
@@ -65,17 +130,8 @@ public class Website {
 		return true;
 	}
 
-	public Website(String name, String webImage, String review) {
-		this.name = name;
-		this.websiteImage = webImage;
-		this.review = review;
 
-	}
 
-	public String getReview() {
-		return review;
-	}
 
-	
 
 }

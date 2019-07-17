@@ -9,7 +9,8 @@
 </header>
 
 <div id="reviewGrid" th:each="review:${reviews}"></div>
-	
+<a th:href="@{/review(id=${review.id})}" th:text="${review.title}"></a>
+	<a th:href="@{http://localhost:8080/reviewers}">Back to home</a>
 <a th:href="@{/websites}">Back to Websites List</a>
 
 </body>

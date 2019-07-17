@@ -1,0 +1,55 @@
+
+.header{
+    text-align: center;
+    padding-top: 7rem;
+    font-family: candara;
+}
+.website-container h5{
+   margin-left: 42px;
+    padding: 10px;
+}
+.website-container h4{
+margin-bottom: 40px;
+padding-top: 4rem;
+}
+.ratings-container{
+margin-bottom: 40px;
+padding-top: 0rem;
+}
+.form-container .header{
+padding-top: 2rem;
+padding-bottom: 25px;
+}
+.ratings-container .header {
+   text-align: center;
+   padding-top: 2rem;
+   padding-bottom: 30px;
+                   }
+.reviewImage{
+	   max-width: 200px;
+           max-height: 200px;
+           padding-top: 24px;
+           width: 120px;
+}
+
+
+#revGrid{
+	   max-width: 634px;
+           margin-left: 7rem;
+           display: inline-grid;
+           max-height: 320px;
+}
+
+.form-container{
+margin-top: 40px;
+padding-bottom: 40px;
+}
+.websiteSiteName{
+padding-top: 1rem !important;
+ margin-left: 8px;
+}
+.ratingHeading{
+font-size: 18px;
+ line-height: 25px;
+}
+

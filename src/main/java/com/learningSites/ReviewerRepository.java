@@ -9,4 +9,10 @@ public interface ReviewerRepository extends CrudRepository<Reviewer, Long> {
 	Collection<Reviewer> findByWebsitesContains(Website udemy);
 
 	Collection<Reviewer> findByWebsitesId(Long id);
+
+	Reviewer findByName(String reviewerName);
+
+	Collection<Reviewer> findAllByOrderByNameAsc();
+
+	Reviewer findByNameIgnoreCaseLike(String reviewerName);
 }

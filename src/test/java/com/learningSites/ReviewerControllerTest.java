@@ -1,5 +1,6 @@
 package com.learningSites;
 
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -9,10 +10,15 @@ import java.util.Optional;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.ui.Model;
+
+import com.learningSites.ReviewNotFoundException;
+import com.learningSites.ReviewersNotFoundException;
+import com.learningSites.WebsiteNotFoundException;
 
 public class ReviewerControllerTest {
 
@@ -21,6 +27,9 @@ public class ReviewerControllerTest {
 
 	@Mock
 	private Reviewer reviewer;
+	Long reviewerId;
+	
+	
 
 	@Mock
 	private Reviewer anotherReviewer;
@@ -42,6 +51,7 @@ public class ReviewerControllerTest {
 
 	@Mock
 	private Website website;
+	Long websiteId;
 
 	@Mock
 	private Website anotherWebsite;
@@ -97,7 +107,7 @@ public class ReviewerControllerTest {
 		when(reviewRepo.findById(reviewId)).thenReturn(Optional.of(review));
 
 		underTest.findOneReview(reviewId, model);
-		verify(model).addAttribute("review", review);
+		verify(model).addAttribute("reviews", review);
 
 	}
 
@@ -108,5 +118,57 @@ public class ReviewerControllerTest {
 		underTest.findAllReviews(model);
 		verify(model).addAttribute("review", allReviews);
 	}
+	
+	@Test 
+	public void shouldAddAdditionalReviewersToModel() {
+		String websiteName = "new websiteName";
+		String reviewerName = "new reviewer";
+		String reviewerDescription = "new Description";
+		String reviewerImageName = "new ImageName";	
+		underTest.addReviewer(reviewerName, reviewerDescription, reviewerImageName, websiteName);
+		
+		ArgumentCaptor<Reviewer> reviewerArgument = ArgumentCaptor.forClass(Reviewer.class);
+		verify(reviewerRepo).save(reviewerArgument.capture());
+		assertEquals("new reviewer", reviewerArgument.getValue().getName());
+	
+	}
+	@Test 
+	public void shouldRemoveReviewerFromModelByName() {
+		String reviewerName = reviewer.getName();
+		when(reviewerRepo.findByName(reviewerName)).thenReturn(reviewer);
+		underTest.deleteReviewerByName(reviewerName);
+		verify(reviewerRepo).delete(reviewer);
+	}
+	@Test 
+	public void shouldRemoveReviewerFromModelById() {
+		underTest.deleteReviewerById(reviewerId);
+		verify(reviewerRepo).deleteById(reviewerId);
+	}
+	
+	@Test
+	public void shouldAddAdditionalWebsiteToModel() {
+		String websiteName = "testWebsite";
+		String websiteReview = "test web review";
+		String websiteStarRating = "test starRating";
+		String websiteStarRating2 = "test starRating2";
+		String websiteStarRating3 = "test starRating3";
+		underTest.addWebsite(websiteName, websiteReview, websiteStarRating, websiteStarRating2, websiteStarRating3);
+		Website newWebsite = new Website(websiteName, websiteReview, websiteStarRating, websiteStarRating2, websiteStarRating3);
+		when(websiteRepo.save(newWebsite)).thenReturn(newWebsite);
+	}
+	@Test 
+	public void shouldRemoveWebsiteFromModelByName() {
+		String websiteName = website.getName();
+		when(websiteRepo.findByName(websiteName)).thenReturn(website);
+		underTest.deleteWebsiteByName(websiteName);
+		verify(websiteRepo).delete(website);
+	}
+	@Test 
+	public void shouldRemoveWebsiteFromModelById() {
+		underTest.deleteWebsiteById(websiteId);
+		verify(websiteRepo).deleteById(websiteId);
+	}
+	
 
-}
+	}
+
